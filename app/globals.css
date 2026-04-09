@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .legacy-content p { @apply mb-8 leading-[1.8] text-lg text-slate-800 font-serif; }
+  .legacy-content h2 { @apply text-4xl font-serif font-bold mt-16 mb-8 text-slate-950 tracking-tight; }
+  .legacy-content a { @apply text-emerald-700 underline font-bold hover:text-emerald-900; }
+  .legacy-content img { @apply rounded-sm my-12 shadow-2xl mx-auto grayscale-[0.3] hover:grayscale-0 transition-all duration-700; }
+}
