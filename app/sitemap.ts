@@ -1,75 +1,42 @@
-import { MetadataRoute } from "next";
-import { getAllPosts } from "@/lib/posts";
+import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://vendocontas.com";
-
-  const staticPages: MetadataRoute.Sitemap = [
+  return [
     {
-      url: ${baseUrl}/,
+      url: "https://vendocontas.com",
       lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 1,
     },
     {
-      url: ${baseUrl}/blog,
+      url: "https://vendocontas.com/blog",
       lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 0.95,
     },
     {
-      url: ${baseUrl}/categoria/instagram,
+      url: "https://vendocontas.com/categoria/instagram",
       lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 0.95,
     },
     {
-      url: ${baseUrl}/categoria/bm-facebook,
+      url: "https://vendocontas.com/categoria/bm-facebook",
       lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
     },
     {
-      url: ${baseUrl}/categoria/youtube,
+      url: "https://vendocontas.com/categoria/youtube",
       lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
     },
     {
-      url: ${baseUrl}/categoria/tiktok,
+      url: "https://vendocontas.com/categoria/tiktok",
       lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
     },
     {
-      url: ${baseUrl}/categoria/twitch,
+      url: "https://vendocontas.com/categoria/twitch",
       lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.85,
     },
     {
-      url: ${baseUrl}/categoria/x-twitter,
+      url: "https://vendocontas.com/categoria/x-twitter",
       lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.85,
     },
     {
-      url: ${baseUrl}/categoria/jogos,
+      url: "https://vendocontas.com/categoria/jogos",
       lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.85,
     },
   ];
-
-  const posts = getAllPosts();
-  const safePosts = Array.isArray(posts) ? posts : [];
-
-  const blogPages: MetadataRoute.Sitemap = safePosts.map((post) => ({
-    url: ${baseUrl}/blog/${post.slug},
-    lastModified: post.date ? new Date(post.date) : new Date(),
-    changeFrequency: "weekly",
-    priority: 0.8,
-  }));
-
-  return [...staticPages, ...blogPages];
 }
