@@ -9,9 +9,33 @@ type Props = {
   }>;
 };
 
+function getPlatformLabel(platform: string) {
+  if (platform === "instagram") return "Instagram";
+  if (platform === "tiktok") return "TikTok";
+  if (platform === "youtube") return "YouTube";
+  if (platform === "twitter") return "X/Twitter";
+  return "BM/Facebook";
+}
+
+function getCategoryHref(platform: string) {
+  if (platform === "instagram") return "/categoria/instagram";
+  if (platform === "tiktok") return "/categoria/tiktok";
+  if (platform === "youtube") return "/categoria/youtube";
+  if (platform === "twitter") return "/categoria/twitter";
+  return "/categoria/bms";
+}
+
+function getCategoryLabel(platform: string) {
+  if (platform === "instagram") return "Ver mais contas de Instagram";
+  if (platform === "tiktok") return "Ver mais contas de TikTok";
+  if (platform === "youtube") return "Ver mais canais de YouTube";
+  if (platform === "twitter") return "Ver mais contas de X / Twitter";
+  return "Ver mais BMs";
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
-  const product = products.find((p) => p.slug === slug);
+  const resolvedParams = await params;
+  const product = products.find((p) => p.slug === resolvedParams.slug);
 
   if (!product) {
     return {
@@ -20,30 +44,32 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  const platformLabel =
-    product.platform === "instagram"
-      ? "Instagram"
-      : product.platform === "tiktok"
-      ? "TikTok"
-      : product.platform === "youtube"
-      ? "YouTube"
-      : product.platform === "twitter"
-      ? "X/Twitter"
-      : "BM/Facebook";
+  const platformLabel = getPlatformLabel(product.platform);
 
-  const title = ${product.title} | VendoContas;
-  const description = Comprar conta ${platformLabel} no nicho ${product.niche}${product.followers ? ` com ${product.followers} : ""}. ${product.description}`;
+  const followersText = product.followers
+    ? " com " + product.followers
+    : "";
+
+  const title = product.title + " | VendoContas";
+  const description =
+    "Comprar conta " +
+    platformLabel +
+    " no nicho " +
+    product.niche +
+    followersText +
+    ". " +
+    product.description;
 
   return {
     title,
     description,
     alternates: {
-      canonical: https://vendocontas.com/produto/${product.slug},
+      canonical: "https://vendocontas.com/produto/" + product.slug,
     },
     openGraph: {
       title,
       description,
-      url: https://vendocontas.com/produto/${product.slug},
+      url: "https://vendocontas.com/produto/" + product.slug,
       type: "website",
       siteName: "VendoContas",
     },
@@ -57,43 +83,14 @@ export async function generateStaticParams() {
 }
 
 export default async function ProductPage({ params }: Props) {
-  const { slug } = await params;
-  const product = products.find((p) => p.slug === slug);
+  const resolvedParams = await params;
+  const product = products.find((p) => p.slug === resolvedParams.slug);
 
   if (!product) return notFound();
 
-  const platformLabel =
-    product.platform === "instagram"
-      ? "Instagram"
-      : product.platform === "tiktok"
-      ? "TikTok"
-      : product.platform === "youtube"
-      ? "YouTube"
-      : product.platform === "twitter"
-      ? "X / Twitter"
-      : "BM / Facebook";
-
-  const categoryHref =
-    product.platform === "instagram"
-      ? "/categoria/instagram"
-      : product.platform === "tiktok"
-      ? "/categoria/tiktok"
-      : product.platform === "youtube"
-      ? "/categoria/youtube"
-      : product.platform === "twitter"
-      ? "/categoria/twitter"
-      : "/categoria/bms";
-
-  const categoryLabel =
-    product.platform === "instagram"
-      ? "Ver mais contas de Instagram"
-      : product.platform === "tiktok"
-      ? "Ver mais contas de TikTok"
-      : product.platform === "youtube"
-      ? "Ver mais canais de YouTube"
-      : product.platform === "twitter"
-      ? "Ver mais contas de X / Twitter"
-      : "Ver mais BMs";
+  const platformLabel = getPlatformLabel(product.platform);
+  const categoryHref = getCategoryHref(product.platform);
+  const categoryLabel = getCategoryLabel(product.platform);
 
   const cleanPrice = product.price.replace(/[^\d,]/g, "").replace(",", ".");
 
@@ -102,7 +99,7 @@ export default async function ProductPage({ params }: Props) {
     "@type": "Product",
     name: product.title,
     description: product.description,
-    category: ${platformLabel} - ${product.niche},
+    category: platformLabel + " - " + product.niche,
     brand: {
       "@type": "Brand",
       name: "VendoContas",
@@ -112,7 +109,7 @@ export default async function ProductPage({ params }: Props) {
       priceCurrency: "BRL",
       price: cleanPrice,
       availability: "https://schema.org/InStock",
-      url: https://vendocontas.com/produto/${product.slug},
+      url: "https://vendocontas.com/produto/" + product.slug,
       seller: {
         "@type": "Organization",
         name: "VendoContas",
@@ -558,9 +555,12 @@ export default async function ProductPage({ params }: Props) {
             </div>
 
             <a
-              href={`https://wa.me/5583999691629?text=${encodeURIComponent(
-                Olá, vim do Google. Quero consultar disponibilidade de: ${product.title}
-              )}`}
+              href={
+                "https://wa.me/5583999691629?text=" +
+                encodeURIComponent(
+                  "Olá, vim do Google. Quero consultar disponibilidade de: " + product.title
+                )
+              }
               target="_blank"
               rel="noopener noreferrer"
               style={{
