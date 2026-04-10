@@ -4,13 +4,14 @@ import Link from "next/link";
 import { products } from "@/data/products";
 
 type Props = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const product = products.find((p) => p.slug === params.slug);
+  const { slug } = await params;
+  const product = products.find((p) => p.slug === slug);
 
   if (!product) {
     return {
@@ -55,8 +56,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function ProductPage({ params }: Props) {
-  const product = products.find((p) => p.slug === params.slug);
+export default async function ProductPage({ params }: Props) {
+  const { slug } = await params;
+  const product = products.find((p) => p.slug === slug);
 
   if (!product) return notFound();
 
