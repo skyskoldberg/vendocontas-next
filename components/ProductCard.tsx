@@ -28,23 +28,25 @@ export default function ProductCard({ product }: Props) {
         color: "#ffffff",
         border: "1px solid rgba(255,255,255,0.08)",
         borderRadius: "20px",
-        padding: "20px",
+        padding: "18px",
         display: "flex",
         flexDirection: "column",
-        gap: "14px",
-        minHeight: "100%"
+        gap: "12px",
+        height: "100%",
+        boxSizing: "border-box"
       }}
     >
       <div
         style={{
           display: "inline-block",
           alignSelf: "flex-start",
-          padding: "6px 10px",
+          padding: "5px 10px",
           borderRadius: "999px",
           backgroundColor: "rgba(255,255,255,0.06)",
-          fontSize: "12px",
+          fontSize: "11px",
           fontWeight: 700,
-          color: "#d1d5db"
+          color: "#d1d5db",
+          lineHeight: 1
         }}
       >
         {platformLabel}
@@ -53,9 +55,10 @@ export default function ProductCard({ product }: Props) {
       <h3
         style={{
           margin: 0,
-          fontSize: "22px",
+          fontSize: "19px",
           lineHeight: 1.15,
-          color: "#ffffff"
+          color: "#ffffff",
+          letterSpacing: "-0.02em"
         }}
       >
         {product.title}
@@ -64,8 +67,8 @@ export default function ProductCard({ product }: Props) {
       <p
         style={{
           margin: 0,
-          fontSize: "15px",
-          lineHeight: 1.7,
+          fontSize: "14px",
+          lineHeight: 1.6,
           color: "#cbd5e1"
         }}
       >
@@ -76,83 +79,119 @@ export default function ProductCard({ product }: Props) {
         style={{
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
-          gap: "10px"
+          gap: "8px"
         }}
       >
         <div
           style={{
             backgroundColor: "rgba(255,255,255,0.04)",
-            borderRadius: "14px",
-            padding: "12px"
+            borderRadius: "12px",
+            padding: "10px"
           }}
         >
           <div
             style={{
-              fontSize: "12px",
+              fontSize: "11px",
               color: "#94a3b8",
-              marginBottom: "4px"
+              marginBottom: "4px",
+              lineHeight: 1.2
             }}
           >
             Nicho
           </div>
-          <div style={{ fontWeight: 700 }}>{product.niche}</div>
+          <div
+            style={{
+              fontWeight: 700,
+              fontSize: "15px",
+              lineHeight: 1.25
+            }}
+          >
+            {product.niche}
+          </div>
         </div>
 
         <div
           style={{
             backgroundColor: "rgba(255,255,255,0.04)",
-            borderRadius: "14px",
-            padding: "12px"
+            borderRadius: "12px",
+            padding: "10px"
           }}
         >
           <div
             style={{
-              fontSize: "12px",
+              fontSize: "11px",
               color: "#94a3b8",
-              marginBottom: "4px"
+              marginBottom: "4px",
+              lineHeight: 1.2
             }}
           >
             Seguidores
           </div>
-          <div style={{ fontWeight: 700 }}>{followersLabel}</div>
+          <div
+            style={{
+              fontWeight: 700,
+              fontSize: "15px",
+              lineHeight: 1.25
+            }}
+          >
+            {followersLabel}
+          </div>
         </div>
 
         <div
           style={{
             backgroundColor: "rgba(255,255,255,0.04)",
-            borderRadius: "14px",
-            padding: "12px"
+            borderRadius: "12px",
+            padding: "10px"
           }}
         >
           <div
             style={{
-              fontSize: "12px",
+              fontSize: "11px",
               color: "#94a3b8",
-              marginBottom: "4px"
+              marginBottom: "4px",
+              lineHeight: 1.2
             }}
           >
             Engajamento
           </div>
-          <div style={{ fontWeight: 700 }}>{engagementLabel}</div>
+          <div
+            style={{
+              fontWeight: 700,
+              fontSize: "15px",
+              lineHeight: 1.25
+            }}
+          >
+            {engagementLabel}
+          </div>
         </div>
 
         <div
           style={{
             backgroundColor: "rgba(255,255,255,0.04)",
-            borderRadius: "14px",
-            padding: "12px"
+            borderRadius: "12px",
+            padding: "10px"
           }}
         >
           <div
             style={{
-              fontSize: "12px",
+              fontSize: "11px",
               color: "#94a3b8",
-              marginBottom: "4px"
+              marginBottom: "4px",
+              lineHeight: 1.2
             }}
           >
             Modelo
           </div>
-          <div style={{ fontWeight: 700 }}>Ativo digital</div>
+          <div
+            style={{
+              fontWeight: 700,
+              fontSize: "15px",
+              lineHeight: 1.25
+            }}
+          >
+            Ativo digital
+          </div>
         </div>
       </div>
 
@@ -162,12 +201,14 @@ export default function ProductCard({ product }: Props) {
             margin: 0,
             paddingLeft: "18px",
             color: "#cbd5e1",
-            lineHeight: 1.8,
+            lineHeight: 1.6,
             fontSize: "14px"
           }}
         >
           {highlights.map((item) => (
-            <li key={item}>{item}</li>
+            <li key={item} style={{ marginBottom: "4px" }}>
+              {item}
+            </li>
           ))}
         </ul>
       ) : null}
@@ -177,14 +218,15 @@ export default function ProductCard({ product }: Props) {
           marginTop: "auto",
           display: "flex",
           flexDirection: "column",
-          gap: "10px"
+          gap: "8px"
         }}
       >
         <div
           style={{
-            fontSize: "28px",
+            fontSize: "22px",
             fontWeight: 800,
-            color: "#ffffff"
+            color: "#ffffff",
+            lineHeight: 1.1
           }}
         >
           {product.price}
@@ -198,10 +240,11 @@ export default function ProductCard({ product }: Props) {
             textDecoration: "none",
             backgroundColor: "#ffffff",
             color: "#111111",
-            padding: "12px 16px",
+            padding: "11px 14px",
             borderRadius: "999px",
             fontSize: "14px",
-            fontWeight: 800
+            fontWeight: 800,
+            lineHeight: 1.2
           }}
         >
           Ver detalhes
@@ -222,11 +265,12 @@ export default function ProductCard({ product }: Props) {
             textDecoration: "none",
             backgroundColor: "transparent",
             color: "#ffffff",
-            padding: "12px 16px",
+            padding: "11px 14px",
             borderRadius: "999px",
             border: "1px solid rgba(255,255,255,0.12)",
             fontSize: "14px",
-            fontWeight: 700
+            fontWeight: 700,
+            lineHeight: 1.2
           }}
         >
           Consultar no WhatsApp
