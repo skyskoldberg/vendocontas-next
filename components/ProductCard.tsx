@@ -14,113 +14,44 @@ export default function ProductCard({ product }: ProductCardProps) {
         gap: "16px",
         height: "100%",
         padding: "24px",
-        borderRadius: "24px",
-        background: "#111111",
+        borderRadius: "20px",
+        background: "#0f172a",
         border: "1px solid rgba(255,255,255,0.08)",
         color: "#ffffff",
+        transition: "all 0.2s ease",
       }}
     >
-      <div
-        style={{
-          display: "inline-block",
-          padding: "6px 10px",
-          borderRadius: "999px",
-          background: "rgba(255,255,255,0.08)",
-          fontSize: "12px",
-          marginBottom: "8px",
-        }}
-      >
-        {product.platform}
-      </div>
-
-      <h3
-        style={{
-          margin: 0,
-          fontSize: "24px",
-          lineHeight: 1.2,
-          color: "#ffffff",
-        }}
-      >
+      {/* TÍTULO SEO */}
+      <h3 style={{ fontSize: "18px", fontWeight: 700 }}>
         {product.title}
       </h3>
 
-      <p
-        style={{
-          margin: 0,
-          color: "#d1d5db",
-          lineHeight: 1.7,
-          fontSize: "15px",
-        }}
-      >
+      {/* META INFO */}
+      <div style={{ fontSize: "13px", opacity: 0.8 }}>
+        {product.category} • {product.followers}
+      </div>
+
+      {/* DESCRIÇÃO SEO */}
+      <p style={{ fontSize: "14px", opacity: 0.9 }}>
         {product.description}
       </p>
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "10px",
-        }}
-      >
-        <div
-          style={{
-            padding: "12px",
-            borderRadius: "16px",
-            background: "rgba(255,255,255,0.04)",
-          }}
-        >
-          <div
-            style={{
-              fontSize: "12px",
-              color: "#9ca3af",
-              marginBottom: "4px",
-            }}
-          >
-            Nicho
-          </div>
-          <strong>{product.niche}</strong>
-        </div>
-
-        <div
-          style={{
-            padding: "12px",
-            borderRadius: "16px",
-            background: "rgba(255,255,255,0.04)",
-          }}
-        >
-          <div
-            style={{
-              fontSize: "12px",
-              color: "#9ca3af",
-              marginBottom: "4px",
-            }}
-          >
-            Seguidores
-          </div>
-          <strong>{product.followers || "Sob consulta"}</strong>
-        </div>
-      </div>
-
-      <div
-        style={{
-          fontSize: "28px",
-          fontWeight: 800,
-          color: "#ffffff",
-        }}
-      >
+      {/* PREÇO */}
+      <div style={{ fontSize: "20px", fontWeight: 700 }}>
         {product.price}
       </div>
 
+      {/* BOTÃO CORRIGIDO */}
       <Link
         href={/produto/${product.slug}}
         style={{
           display: "inline-block",
-          textDecoration: "none",
           marginTop: "12px",
-          padding: "12px 18px",
-          borderRadius: "999px",
-          background: "#ffffff",
-          color: "#111111",
+          padding: "12px 16px",
+          borderRadius: "10px",
+          background: "#22c55e",
+          color: "#000000",
+          textDecoration: "none",
           fontWeight: 700,
           fontSize: "14px",
         }}
