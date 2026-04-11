@@ -1,39 +1,42 @@
 import Link from "next/link";
-import type { ProductItem } from "@/data/products";
 
-type ProductCardProps = {
+type ProductItem = {
+  slug: string;
+  title: string;
+  description: string;
+  price: string;
+  platform: string;
+};
+
+type Props = {
   product: ProductItem;
 };
 
-export default function ProductCard({ product }: ProductCardProps) {
+export default function ProductCard({ product }: Props) {
   return (
     <article
       style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "16px",
         padding: "20px",
-        borderRadius: "20px",
+        borderRadius: "16px",
         background: "#111",
         border: "1px solid rgba(255,255,255,0.1)",
-        color: "#fff"
+        color: "#fff",
+        display: "flex",
+        flexDirection: "column",
+        gap: "10px"
       }}
     >
       <span style={{ fontSize: "12px", opacity: 0.7 }}>
         {product.platform}
       </span>
 
-      <h3 style={{ margin: 0, fontSize: "20px" }}>
-        {product.title}
-      </h3>
+      <h3 style={{ margin: 0 }}>{product.title}</h3>
 
-      <p style={{ margin: 0, fontSize: "14px", opacity: 0.8 }}>
+      <p style={{ margin: 0, opacity: 0.8 }}>
         {product.description}
       </p>
 
-      <strong style={{ fontSize: "22px" }}>
-        {product.price}
-      </strong>
+      <strong>{product.price}</strong>
 
       <Link href={/produto/${product.slug}}>
         Ver detalhes
