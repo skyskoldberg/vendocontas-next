@@ -2,14 +2,26 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { products } from "@/data/products";
 
-export default function ProdutoPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const product = products.find((p) => p.slug === params.slug);
+type ProdutoPageProps = {
+  params: Promise<{
+    slug: string;
+  }>;
+};
 
-  if (!product) return notFound();
+export async function generateStaticParams() {
+  return products.map((product) => ({
+    slug: product.slug,
+  }));
+}
+
+export default async function ProdutoPage({ params }: ProdutoPageProps) {
+  const { slug } = await params;
+
+  const product = products.find((p) => p.slug === slug);
+
+  if (!product) {
+    notFound();
+  }
 
   return (
     <main
@@ -26,7 +38,6 @@ export default function ProdutoPage({
           padding: "56px 24px",
         }}
       >
-        {/* BREADCRUMB (SEM ERRO JSX) */}
         <div
           style={{
             color: "#94a3b8",
@@ -34,14 +45,13 @@ export default function ProdutoPage({
             marginBottom: "20px",
           }}
         >
-          <Link href="/">Início</Link> {" / "}
-          <Link href={/categoria/${product.platform}}>
-            {product.platform}
-          </Link>{" "}
-          {" / "} {product.title}
+          <Link href="/">Início</Link>
+          {" / "}
+          <Link href={/categoria/${product.platform}}>{product.platform}</Link>
+          {" / "}
+          {product.title}
         </div>
 
-        {/* GRID */}
         <div
           style={{
             display: "grid",
@@ -49,7 +59,6 @@ export default function ProdutoPage({
             gap: "32px",
           }}
         >
-          {/* ESQUERDA */}
           <div>
             <div
               style={{
@@ -74,7 +83,7 @@ export default function ProdutoPage({
 
             <p
               style={{
-                color: "#cbd5f5",
+                color: "#cbd5e1",
                 fontSize: "18px",
                 lineHeight: 1.8,
                 marginBottom: "24px",
@@ -83,7 +92,6 @@ export default function ProdutoPage({
               {product.description}
             </p>
 
-            {/* MÉTRICAS */}
             <div
               style={{
                 display: "grid",
@@ -97,21 +105,20 @@ export default function ProdutoPage({
               <Metric title="Nicho" value={product.niche} />
             </div>
 
-            {/* LISTA */}
             <ul
               style={{
                 paddingLeft: "20px",
                 lineHeight: 1.8,
-                color: "#cbd5f5",
+                color: "#cbd5e1",
+                margin: 0,
               }}
             >
-              {product.highlights?.map((item, i) => (
-                <li key={i}>{item}</li>
+              {product.highlights.map((item, index) => (
+                <li key={index}>{item}</li>
               ))}
             </ul>
           </div>
 
-          {/* CARD DIREITA */}
           <div
             style={{
               background: "#020617",
@@ -132,15 +139,15 @@ export default function ProdutoPage({
             </div>
 
             <a
-              href={`https://wa.me/5583999691629?text=Quero%20comprar%20${encodeURIComponent(
-                product.title
+              href={`https://wa.me/5583999691629?text=${encodeURIComponent(
+                Quero comprar ${product.title}
               )}`}
               target="_blank"
               rel="noopener noreferrer"
               style={{
                 display: "block",
                 background: "#22c55e",
-                color: "#000",
+                color: "#000000",
                 textAlign: "center",
                 padding: "16px",
                 borderRadius: "999px",
@@ -161,7 +168,7 @@ export default function ProdutoPage({
                 padding: "14px",
                 borderRadius: "999px",
                 textDecoration: "none",
-                color: "#fff",
+                color: "#ffffff",
               }}
             >
               Ver mais contas
@@ -181,13 +188,12 @@ export default function ProdutoPage({
         </div>
       </section>
 
-      {/* SEO */}
       <section
         style={{
           maxWidth: "900px",
           margin: "0 auto",
           padding: "0 24px 80px",
-          color: "#cbd5f5",
+          color: "#cbd5e1",
           lineHeight: 1.9,
         }}
       >
@@ -212,7 +218,6 @@ export default function ProdutoPage({
   );
 }
 
-/* COMPONENTE */
 function Metric({
   title,
   value,
@@ -230,9 +235,7 @@ function Metric({
       }}
     >
       <div style={{ fontSize: "12px", color: "#64748b" }}>{title}</div>
-      <div style={{ fontSize: "18px", fontWeight: 700 }}>
-        {value || "-"}
-      </div>
+      <div style={{ fontSize: "18px", fontWeight: 700 }}>{value || "-"}</div>
     </div>
   );
 }
