@@ -1,7 +1,9 @@
+import Link from "next/link";
+import ProductCard from "@/components/ProductCard";
+import { products } from "@/data/products";
+
 export default function CategoriaJogosPage() {
-  const jogosProducts = products.filter(
-    (product) => product.platform === "jogos"
-  );
+  const jogosProducts = products.filter((product) => product.platform === "jogos");
 
   return (
     <main
@@ -18,7 +20,13 @@ export default function CategoriaJogosPage() {
           padding: "56px 24px 24px"
         }}
       >
-        <div style={{ marginBottom: "18px", color: "#6b7280", fontSize: "14px" }}>
+        <div
+          style={{
+            marginBottom: "18px",
+            color: "#6b7280",
+            fontSize: "14px"
+          }}
+        >
           Início / Jogos
         </div>
 
@@ -65,7 +73,7 @@ export default function CategoriaJogosPage() {
           }}
         >
           Contas de jogos exigem leitura de comunidade, recorrência de conteúdo,
-          potencial de engajamento e aderência ao nicho gamer. Esta página reúne
+          aderência ao nicho gamer e potencial de engajamento. Esta página reúne
           os critérios principais para avaliar um ativo antes da compra e conecta
           você às opções disponíveis.
         </p>
@@ -146,17 +154,38 @@ export default function CategoriaJogosPage() {
               padding: "22px"
             }}
           >
-            <div style={{ fontSize: "11px", color: "#6b7280", marginBottom: "8px" }}>
+            <div
+              style={{
+                fontSize: "11px",
+                color: "#6b7280",
+                marginBottom: "8px",
+                textTransform: "uppercase",
+                letterSpacing: "0.06em"
+              }}
+            >
               Análise
             </div>
 
-            <h2 style={{ fontSize: "28px", margin: "0 0 10px" }}>
+            <h2
+              style={{
+                fontSize: "28px",
+                lineHeight: 1.05,
+                margin: "0 0 10px"
+              }}
+            >
               O que observar antes de comprar uma conta gamer?
             </h2>
 
-            <p style={{ margin: 0, color: "#4b5563", lineHeight: 1.8 }}>
+            <p
+              style={{
+                margin: 0,
+                color: "#4b5563",
+                lineHeight: 1.8,
+                fontSize: "15px"
+              }}
+            >
               Nicho do jogo, força da comunidade, consistência do conteúdo,
-              potencial de clips, comunidade e aderência comercial são fatores
+              potencial de clips, recorrência e aderência comercial são fatores
               centrais na avaliação.
             </p>
           </div>
@@ -169,15 +198,36 @@ export default function CategoriaJogosPage() {
               padding: "22px"
             }}
           >
-            <div style={{ fontSize: "11px", color: "#6b7280", marginBottom: "8px" }}>
+            <div
+              style={{
+                fontSize: "11px",
+                color: "#6b7280",
+                marginBottom: "8px",
+                textTransform: "uppercase",
+                letterSpacing: "0.06em"
+              }}
+            >
               Estratégia
             </div>
 
-            <h2 style={{ fontSize: "28px", margin: "0 0 10px" }}>
+            <h2
+              style={{
+                fontSize: "28px",
+                lineHeight: 1.05,
+                margin: "0 0 10px"
+              }}
+            >
               Jogos são comunidade, repetição e cultura de nicho
             </h2>
 
-            <p style={{ margin: 0, color: "#4b5563", lineHeight: 1.8 }}>
+            <p
+              style={{
+                margin: 0,
+                color: "#4b5563",
+                lineHeight: 1.8,
+                fontSize: "15px"
+              }}
+            >
               O valor de um ativo gamer está menos no número bruto e mais na força
               do nicho, identificação da audiência e capacidade de recorrência.
             </p>
@@ -191,15 +241,36 @@ export default function CategoriaJogosPage() {
               padding: "22px"
             }}
           >
-            <div style={{ fontSize: "11px", color: "#6b7280", marginBottom: "8px" }}>
+            <div
+              style={{
+                fontSize: "11px",
+                color: "#6b7280",
+                marginBottom: "8px",
+                textTransform: "uppercase",
+                letterSpacing: "0.06em"
+              }}
+            >
               Conversão
             </div>
 
-            <h2 style={{ fontSize: "28px", margin: "0 0 10px" }}>
-              Conteúdo gamer + vitrine de ativos
+            <h2
+              style={{
+                fontSize: "28px",
+                lineHeight: 1.05,
+                margin: "0 0 10px"
+              }}
+            >
+              Conteúdo gamer mais vitrine de ativos
             </h2>
 
-            <p style={{ margin: 0, color: "#4b5563", lineHeight: 1.8 }}>
+            <p
+              style={{
+                margin: 0,
+                color: "#4b5563",
+                lineHeight: 1.8,
+                fontSize: "15px"
+              }}
+            >
               A categoria combina contexto estratégico para SEO com cards prontos
               para consulta, comparação e avanço direto para negociação.
             </p>
@@ -271,7 +342,6 @@ export default function CategoriaJogosPage() {
               style={{
                 fontSize: "24px",
                 lineHeight: 1.05,
-                letterSpacing: "-0.04em",
                 margin: "0 0 10px"
               }}
             >
@@ -315,7 +385,6 @@ export default function CategoriaJogosPage() {
               style={{
                 fontSize: "24px",
                 lineHeight: 1.05,
-                letterSpacing: "-0.04em",
                 margin: "0 0 10px"
               }}
             >
@@ -359,7 +428,6 @@ export default function CategoriaJogosPage() {
               style={{
                 fontSize: "24px",
                 lineHeight: 1.05,
-                letterSpacing: "-0.04em",
                 margin: "0 0 10px"
               }}
             >
@@ -480,14 +548,25 @@ export default function CategoriaJogosPage() {
             padding: "24px"
           }}
         >
-          <h2 style={{ fontSize: "36px", marginBottom: "12px" }}>
+          <h2
+            style={{
+              fontSize: "36px",
+              marginBottom: "12px"
+            }}
+          >
             Comprar conta de jogos com mais critério
           </h2>
 
-          <p style={{ margin: 0, color: "#4b5563", lineHeight: 1.9 }}>
+          <p
+            style={{
+              margin: 0,
+              color: "#4b5563",
+              lineHeight: 1.9
+            }}
+          >
             Trabalhamos com ativos digitais como Instagram, TikTok, YouTube, BMs,
-            Twitch, X / Twitter e contas gamer. O objetivo é reduzir erro e aumentar
-            a precisão da decisão.
+            Twitch, X / Twitter e contas gamer. O objetivo é reduzir erro e
+            aumentar a precisão da decisão.
           </p>
         </div>
       </section>
