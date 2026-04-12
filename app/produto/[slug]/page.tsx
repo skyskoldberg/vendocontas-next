@@ -37,14 +37,24 @@ export async function generateMetadata({ params }: PageProps) {
   }
 
   const platformLabel = getPlatformLabel(product.platform);
-  const followersText = product.followers ? ${product.followers} seguidores : "ativo digital disponível";
-  const engagementText = product.engagement ? ${product.engagement} de engajamento : "com análise estratégica";
+  const followersText = product.followers
+    ? product.followers + " seguidores"
+    : "ativo digital disponível";
+  const engagementText = product.engagement
+    ? product.engagement + " de engajamento"
+    : "com análise estratégica";
 
   return {
-    title: ${product.title} | Comprar conta ${platformLabel},
-    description: ${product.title}. ${followersText}, ${engagementText}. Veja detalhes, nicho, métricas e fale no WhatsApp para negociar.,
+    title: product.title + " | Comprar conta " + platformLabel,
+    description:
+      product.title +
+      ". " +
+      followersText +
+      ", " +
+      engagementText +
+      ". Veja detalhes, nicho, métricas e fale no WhatsApp para negociar.",
     openGraph: {
-      title: ${product.title} | VendoContas,
+      title: product.title + " | VendoContas",
       description: product.description,
       type: "website",
     },
@@ -74,6 +84,8 @@ export default async function ProdutoPage({ params }: PageProps) {
     )
     .slice(0, 3);
 
+  const cleanPrice = product.price.replace(/[^\d,]/g, "").replace(",", ".");
+
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -86,7 +98,7 @@ export default async function ProdutoPage({ params }: PageProps) {
     },
     offers: {
       "@type": "Offer",
-      price: product.price.replace(/[^\d,]/g, "").replace(",", "."),
+      price: cleanPrice,
       priceCurrency: "BRL",
       availability: "https://schema.org/InStock",
       url: "/produto/" + product.slug,
@@ -214,7 +226,12 @@ export default async function ProdutoPage({ params }: PageProps) {
               >
                 <img
                   src={product.image}
-                  alt={Comprar ${product.title} com ${product.followers || "métricas estratégicas"}}
+                  alt={
+                    "Comprar " +
+                    product.title +
+                    " com " +
+                    (product.followers || "métricas estratégicas")
+                  }
                   loading="lazy"
                   style={{
                     display: "block",
@@ -346,10 +363,7 @@ export default async function ProdutoPage({ params }: PageProps) {
                 gap: "10px",
               }}
             >
-              <MiniInfo
-                label="Plataforma"
-                value={platformLabel}
-              />
+              <MiniInfo label="Plataforma" value={platformLabel} />
               <MiniInfo
                 label="Seguidores"
                 value={product.followers || "Sob consulta"}
