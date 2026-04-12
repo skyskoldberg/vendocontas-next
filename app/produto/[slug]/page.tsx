@@ -15,19 +15,20 @@ export async function generateStaticParams() {
 }
 
 export default async function ProdutoPage({ params }: PageProps) {
-  const { slug } = await params;
+  const resolvedParams = await params;
+  const slug = resolvedParams.slug;
 
-  const product = products.find((p) => p.slug === slug);
+  const product = products.find((item) => item.slug === slug);
 
   if (!product) {
     notFound();
   }
 
+  const whatsappText = "Olá, quero comprar " + product.title;
   const whatsappHref =
-    "https://wa.me/5583999691629?text=" +
-    encodeURIComponent(Olá, quero comprar ${product.title});
+    "https://wa.me/5583999691629?text=" + encodeURIComponent(whatsappText);
 
-  const categoryHref = /categoria/${product.platform};
+  const categoryHref = "/categoria/" + product.platform;
 
   return (
     <main
@@ -44,18 +45,24 @@ export default async function ProdutoPage({ params }: PageProps) {
           padding: "56px 24px",
         }}
       >
-        {/* Breadcrumb */}
         <div
           style={{
             color: "#94a3b8",
             fontSize: "14px",
             marginBottom: "24px",
             display: "flex",
-            gap: "8px",
             flexWrap: "wrap",
+            gap: "8px",
+            alignItems: "center",
           }}
         >
-          <Link href="/" style={{ color: "#94a3b8", textDecoration: "none" }}>
+          <Link
+            href="/"
+            style={{
+              color: "#94a3b8",
+              textDecoration: "none",
+            }}
+          >
             Início
           </Link>
 
@@ -63,7 +70,10 @@ export default async function ProdutoPage({ params }: PageProps) {
 
           <Link
             href={categoryHref}
-            style={{ color: "#94a3b8", textDecoration: "none" }}
+            style={{
+              color: "#94a3b8",
+              textDecoration: "none",
+            }}
           >
             {product.platform}
           </Link>
@@ -76,11 +86,10 @@ export default async function ProdutoPage({ params }: PageProps) {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "minmax(0,1.2fr) minmax(320px,0.8fr)",
+            gridTemplateColumns: "minmax(0, 1.2fr) minmax(320px, 0.8fr)",
             gap: "32px",
           }}
         >
-          {/* LEFT */}
           <div>
             <div
               style={{
@@ -88,6 +97,7 @@ export default async function ProdutoPage({ params }: PageProps) {
                 color: "#94a3b8",
                 marginBottom: "10px",
                 textTransform: "uppercase",
+                letterSpacing: "0.08em",
               }}
             >
               Marketplace de ativos digitais
@@ -97,7 +107,7 @@ export default async function ProdutoPage({ params }: PageProps) {
               style={{
                 fontSize: "52px",
                 lineHeight: 1.05,
-                marginBottom: "16px",
+                margin: "0 0 16px 0",
               }}
             >
               {product.title}
@@ -108,7 +118,7 @@ export default async function ProdutoPage({ params }: PageProps) {
                 color: "#cbd5e1",
                 fontSize: "18px",
                 lineHeight: 1.8,
-                marginBottom: "24px",
+                margin: "0 0 24px 0",
               }}
             >
               {product.description}
@@ -117,7 +127,7 @@ export default async function ProdutoPage({ params }: PageProps) {
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(3,1fr)",
+                gridTemplateColumns: "repeat(3, 1fr)",
                 gap: "12px",
                 marginBottom: "24px",
               }}
@@ -129,8 +139,8 @@ export default async function ProdutoPage({ params }: PageProps) {
 
             <ul
               style={{
-                paddingLeft: "20px",
                 margin: 0,
+                paddingLeft: "20px",
                 color: "#cbd5e1",
                 lineHeight: 1.8,
               }}
@@ -141,13 +151,12 @@ export default async function ProdutoPage({ params }: PageProps) {
             </ul>
           </div>
 
-          {/* RIGHT CARD */}
-          <div
+          <aside
             style={{
               backgroundColor: "#020617",
+              border: "1px solid rgba(255,255,255,0.08)",
               borderRadius: "20px",
               padding: "28px",
-              border: "1px solid rgba(255,255,255,0.08)",
               height: "fit-content",
             }}
           >
@@ -168,7 +177,7 @@ export default async function ProdutoPage({ params }: PageProps) {
               style={{
                 display: "block",
                 backgroundColor: "#22c55e",
-                color: "#000",
+                color: "#000000",
                 padding: "16px",
                 borderRadius: "999px",
                 textAlign: "center",
@@ -188,7 +197,7 @@ export default async function ProdutoPage({ params }: PageProps) {
                 padding: "14px",
                 borderRadius: "999px",
                 textAlign: "center",
-                color: "#fff",
+                color: "#ffffff",
                 textDecoration: "none",
               }}
             >
@@ -205,30 +214,44 @@ export default async function ProdutoPage({ params }: PageProps) {
             >
               Atendimento rápido • Entrega segura
             </div>
-          </div>
+          </aside>
         </div>
       </section>
 
-      {/* SEO */}
       <section
         style={{
           maxWidth: "900px",
           margin: "0 auto",
-          padding: "0 24px 80px",
+          padding: "0 24px 80px 24px",
           color: "#cbd5e1",
         }}
       >
-        <h2 style={{ fontSize: "28px", marginBottom: "12px" }}>
+        <h2
+          style={{
+            fontSize: "28px",
+            margin: "0 0 12px 0",
+          }}
+        >
           Vale a pena comprar conta {product.platform}?
         </h2>
 
-        <p style={{ lineHeight: 1.9 }}>
+        <p
+          style={{
+            lineHeight: 1.9,
+            margin: "0 0 16px 0",
+          }}
+        >
           Comprar conta {product.platform} pode acelerar resultados digitais,
           desde que o ativo seja analisado com critério. Engajamento real,
           consistência de audiência e aderência ao nicho são fatores críticos.
         </p>
 
-        <p style={{ lineHeight: 1.9 }}>
+        <p
+          style={{
+            lineHeight: 1.9,
+            margin: 0,
+          }}
+        >
           Esta página reúne os dados essenciais para uma decisão mais segura e
           conecta você diretamente ao ativo disponível para negociação.
         </p>
@@ -253,8 +276,24 @@ function Metric({
         border: "1px solid rgba(255,255,255,0.08)",
       }}
     >
-      <div style={{ fontSize: "12px", color: "#64748b" }}>{title}</div>
-      <div style={{ fontSize: "18px", fontWeight: 700 }}>{value}</div>
+      <div
+        style={{
+          fontSize: "12px",
+          color: "#64748b",
+          marginBottom: "6px",
+        }}
+      >
+        {title}
+      </div>
+
+      <div
+        style={{
+          fontSize: "18px",
+          fontWeight: 700,
+        }}
+      >
+        {value}
+      </div>
     </div>
   );
 }
