@@ -1,8 +1,8 @@
-import { notFound } from "next/navigation";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { products } from "@/data/products";
 
-type ProdutoPageProps = {
+type PageProps = {
   params: Promise<{
     slug: string;
   }>;
@@ -14,19 +14,24 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function ProdutoPage({ params }: ProdutoPageProps) {
+export default async function ProdutoPage({ params }: PageProps) {
   const { slug } = await params;
-
-  const product = products.find((p) => p.slug === slug);
+  const product = products.find((item) => item.slug === slug);
 
   if (!product) {
     notFound();
   }
 
+  const whatsappHref =
+    "https://wa.me/5583999691629?text=" +
+    encodeURIComponent(Olá, quero comprar ${product.title});
+
+  const categoryHref = "/categoria/" + product.platform;
+
   return (
     <main
       style={{
-        background: "#0f172a",
+        backgroundColor: "#0f172a",
         color: "#ffffff",
         minHeight: "100vh",
       }}
@@ -42,20 +47,31 @@ export default async function ProdutoPage({ params }: ProdutoPageProps) {
           style={{
             color: "#94a3b8",
             fontSize: "14px",
-            marginBottom: "20px",
+            marginBottom: "24px",
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "8px",
+            alignItems: "center",
           }}
         >
-          <Link href="/">Início</Link>
-          {" / "}
-          <Link href={/categoria/${product.platform}}>{product.platform}</Link>
-          {" / "}
-          {product.title}
+          <Link href="/" style={{ color: "#94a3b8", textDecoration: "none" }}>
+            Início
+          </Link>
+          <span>/</span>
+          <Link
+            href={categoryHref}
+            style={{ color: "#94a3b8", textDecoration: "none" }}
+          >
+            {product.platform}
+          </Link>
+          <span>/</span>
+          <span>{product.title}</span>
         </div>
 
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1.2fr 0.8fr",
+            gridTemplateColumns: "minmax(0, 1.2fr) minmax(320px, 0.8fr)",
             gap: "32px",
           }}
         >
@@ -64,8 +80,9 @@ export default async function ProdutoPage({ params }: ProdutoPageProps) {
               style={{
                 fontSize: "12px",
                 color: "#94a3b8",
-                marginBottom: "10px",
+                marginBottom: "12px",
                 textTransform: "uppercase",
+                letterSpacing: "0.08em",
               }}
             >
               Marketplace de ativos digitais
@@ -75,7 +92,7 @@ export default async function ProdutoPage({ params }: ProdutoPageProps) {
               style={{
                 fontSize: "52px",
                 lineHeight: 1.05,
-                marginBottom: "18px",
+                margin: "0 0 18px 0",
               }}
             >
               {product.title}
@@ -86,7 +103,7 @@ export default async function ProdutoPage({ params }: ProdutoPageProps) {
                 color: "#cbd5e1",
                 fontSize: "18px",
                 lineHeight: 1.8,
-                marginBottom: "24px",
+                margin: "0 0 24px 0",
               }}
             >
               {product.description}
@@ -95,34 +112,34 @@ export default async function ProdutoPage({ params }: ProdutoPageProps) {
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(3, 1fr)",
+                gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
                 gap: "12px",
                 marginBottom: "24px",
               }}
             >
-              <Metric title="Seguidores" value={product.followers} />
-              <Metric title="Engajamento" value={product.engagement} />
-              <Metric title="Nicho" value={product.niche} />
+              <Metric title="Seguidores" value={product.followers || "-"} />
+              <Metric title="Engajamento" value={product.engagement || "-"} />
+              <Metric title="Nicho" value={product.niche || "-"} />
             </div>
 
             <ul
               style={{
-                paddingLeft: "20px",
-                lineHeight: 1.8,
-                color: "#cbd5e1",
                 margin: 0,
+                paddingLeft: "20px",
+                color: "#cbd5e1",
+                lineHeight: 1.8,
               }}
             >
-              {product.highlights.map((item, index) => (
-                <li key={index}>{item}</li>
+              {product.highlights.map((item) => (
+                <li key={item}>{item}</li>
               ))}
             </ul>
           </div>
 
-          <div
+          <aside
             style={{
-              background: "#020617",
-              border: "1px solid rgba(255,255,255,0.06)",
+              backgroundColor: "#020617",
+              border: "1px solid rgba(255,255,255,0.08)",
               borderRadius: "24px",
               padding: "28px",
               height: "fit-content",
@@ -139,14 +156,12 @@ export default async function ProdutoPage({ params }: ProdutoPageProps) {
             </div>
 
             <a
-              href={`https://wa.me/5583999691629?text=${encodeURIComponent(
-                Quero comprar ${product.title}
-              )}`}
+              href={whatsappHref}
               target="_blank"
               rel="noopener noreferrer"
               style={{
                 display: "block",
-                background: "#22c55e",
+                backgroundColor: "#22c55e",
                 color: "#000000",
                 textAlign: "center",
                 padding: "16px",
@@ -160,7 +175,7 @@ export default async function ProdutoPage({ params }: ProdutoPageProps) {
             </a>
 
             <Link
-              href={/categoria/${product.platform}}
+              href={categoryHref}
               style={{
                 display: "block",
                 textAlign: "center",
@@ -184,7 +199,7 @@ export default async function ProdutoPage({ params }: ProdutoPageProps) {
             >
               Atendimento rápido • Entrega segura
             </div>
-          </div>
+          </aside>
         </div>
       </section>
 
@@ -192,23 +207,37 @@ export default async function ProdutoPage({ params }: ProdutoPageProps) {
         style={{
           maxWidth: "900px",
           margin: "0 auto",
-          padding: "0 24px 80px",
+          padding: "0 24px 80px 24px",
           color: "#cbd5e1",
-          lineHeight: 1.9,
         }}
       >
-        <h2 style={{ fontSize: "30px", marginBottom: "16px" }}>
+        <h2
+          style={{
+            fontSize: "30px",
+            margin: "0 0 16px 0",
+          }}
+        >
           Vale a pena comprar conta {product.platform}?
         </h2>
 
-        <p>
+        <p
+          style={{
+            lineHeight: 1.9,
+            margin: "0 0 16px 0",
+          }}
+        >
           A compra de contas {product.platform} pode acelerar resultados digitais,
           desde que o ativo seja analisado com critério. Elementos como
           engajamento real, consistência de audiência e aderência ao nicho são
           determinantes.
         </p>
 
-        <p>
+        <p
+          style={{
+            lineHeight: 1.9,
+            margin: 0,
+          }}
+        >
           Esta página apresenta os dados essenciais para uma decisão mais segura,
           conectando você diretamente ao ativo disponível e ao atendimento para
           negociação.
@@ -223,19 +252,36 @@ function Metric({
   value,
 }: {
   title: string;
-  value?: string;
+  value: string;
 }) {
   return (
     <div
       style={{
-        background: "#020617",
+        backgroundColor: "#020617",
         padding: "14px",
         borderRadius: "14px",
-        border: "1px solid rgba(255,255,255,0.06)",
+        border: "1px solid rgba(255,255,255,0.08)",
       }}
     >
-      <div style={{ fontSize: "12px", color: "#64748b" }}>{title}</div>
-      <div style={{ fontSize: "18px", fontWeight: 700 }}>{value || "-"}</div>
+      <div
+        style={{
+          fontSize: "12px",
+          color: "#64748b",
+          marginBottom: "6px",
+        }}
+      >
+        {title}
+      </div>
+
+      <div
+        style={{
+          fontSize: "18px",
+          fontWeight: 700,
+          color: "#ffffff",
+        }}
+      >
+        {value}
+      </div>
     </div>
   );
 }
