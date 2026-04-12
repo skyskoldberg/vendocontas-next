@@ -2,7 +2,11 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { products } from "@/data/products";
 
-export default function ProdutoPage({ params }: { params: { slug: string } }) {
+export default function ProdutoPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const product = products.find((p) => p.slug === params.slug);
 
   if (!product) return notFound();
@@ -12,37 +16,37 @@ export default function ProdutoPage({ params }: { params: { slug: string } }) {
       style={{
         background: "#0f172a",
         color: "#ffffff",
-        minHeight: "100vh"
+        minHeight: "100vh",
       }}
     >
       <section
         style={{
           maxWidth: "1200px",
           margin: "0 auto",
-          padding: "56px 24px"
+          padding: "56px 24px",
         }}
       >
-        {/* Breadcrumb */}
+        {/* BREADCRUMB (SEM ERRO JSX) */}
         <div
           style={{
             color: "#94a3b8",
             fontSize: "14px",
-            marginBottom: "20px"
+            marginBottom: "20px",
           }}
         >
-          <Link href="/">Início</Link> /{" "}
+          <Link href="/">Início</Link> {" / "}
           <Link href={/categoria/${product.platform}}>
             {product.platform}
           </Link>{" "}
-          / {product.title}
+          {" / "} {product.title}
         </div>
 
-        {/* GRID PRINCIPAL */}
+        {/* GRID */}
         <div
           style={{
             display: "grid",
             gridTemplateColumns: "1.2fr 0.8fr",
-            gap: "32px"
+            gap: "32px",
           }}
         >
           {/* ESQUERDA */}
@@ -52,7 +56,7 @@ export default function ProdutoPage({ params }: { params: { slug: string } }) {
                 fontSize: "12px",
                 color: "#94a3b8",
                 marginBottom: "10px",
-                textTransform: "uppercase"
+                textTransform: "uppercase",
               }}
             >
               Marketplace de ativos digitais
@@ -60,9 +64,9 @@ export default function ProdutoPage({ params }: { params: { slug: string } }) {
 
             <h1
               style={{
-                fontSize: "56px",
-                lineHeight: 1,
-                marginBottom: "18px"
+                fontSize: "52px",
+                lineHeight: 1.05,
+                marginBottom: "18px",
               }}
             >
               {product.title}
@@ -73,7 +77,7 @@ export default function ProdutoPage({ params }: { params: { slug: string } }) {
                 color: "#cbd5f5",
                 fontSize: "18px",
                 lineHeight: 1.8,
-                marginBottom: "24px"
+                marginBottom: "24px",
               }}
             >
               {product.description}
@@ -85,7 +89,7 @@ export default function ProdutoPage({ params }: { params: { slug: string } }) {
                 display: "grid",
                 gridTemplateColumns: "repeat(3, 1fr)",
                 gap: "12px",
-                marginBottom: "24px"
+                marginBottom: "24px",
               }}
             >
               <Metric title="Seguidores" value={product.followers} />
@@ -93,12 +97,12 @@ export default function ProdutoPage({ params }: { params: { slug: string } }) {
               <Metric title="Nicho" value={product.niche} />
             </div>
 
-            {/* HIGHLIGHTS */}
+            {/* LISTA */}
             <ul
               style={{
                 paddingLeft: "20px",
                 lineHeight: 1.8,
-                color: "#cbd5f5"
+                color: "#cbd5f5",
               }}
             >
               {product.highlights?.map((item, i) => (
@@ -107,21 +111,21 @@ export default function ProdutoPage({ params }: { params: { slug: string } }) {
             </ul>
           </div>
 
-          {/* DIREITA (CARD DE VENDA) */}
+          {/* CARD DIREITA */}
           <div
             style={{
               background: "#020617",
               border: "1px solid rgba(255,255,255,0.06)",
               borderRadius: "24px",
               padding: "28px",
-              height: "fit-content"
+              height: "fit-content",
             }}
           >
             <div
               style={{
                 fontSize: "40px",
                 fontWeight: 800,
-                marginBottom: "20px"
+                marginBottom: "20px",
               }}
             >
               {product.price}
@@ -132,6 +136,7 @@ export default function ProdutoPage({ params }: { params: { slug: string } }) {
                 product.title
               )}`}
               target="_blank"
+              rel="noopener noreferrer"
               style={{
                 display: "block",
                 background: "#22c55e",
@@ -141,7 +146,7 @@ export default function ProdutoPage({ params }: { params: { slug: string } }) {
                 borderRadius: "999px",
                 fontWeight: 800,
                 textDecoration: "none",
-                marginBottom: "12px"
+                marginBottom: "12px",
               }}
             >
               Comprar pelo WhatsApp
@@ -156,7 +161,7 @@ export default function ProdutoPage({ params }: { params: { slug: string } }) {
                 padding: "14px",
                 borderRadius: "999px",
                 textDecoration: "none",
-                color: "#fff"
+                color: "#fff",
               }}
             >
               Ver mais contas
@@ -167,7 +172,7 @@ export default function ProdutoPage({ params }: { params: { slug: string } }) {
                 marginTop: "18px",
                 fontSize: "13px",
                 color: "#64748b",
-                textAlign: "center"
+                textAlign: "center",
               }}
             >
               Atendimento rápido • Entrega segura
@@ -176,46 +181,52 @@ export default function ProdutoPage({ params }: { params: { slug: string } }) {
         </div>
       </section>
 
-      {/* SEO TEXTO */}
+      {/* SEO */}
       <section
         style={{
           maxWidth: "900px",
           margin: "0 auto",
           padding: "0 24px 80px",
           color: "#cbd5f5",
-          lineHeight: 1.9
+          lineHeight: 1.9,
         }}
       >
-        <h2 style={{ fontSize: "32px", marginBottom: "16px" }}>
-          Vale a pena comprar {product.platform}?
+        <h2 style={{ fontSize: "30px", marginBottom: "16px" }}>
+          Vale a pena comprar conta {product.platform}?
         </h2>
 
         <p>
-          A compra de ativos digitais como contas {product.platform} pode acelerar
-          resultados, desde que a análise seja feita corretamente. Elementos como
+          A compra de contas {product.platform} pode acelerar resultados digitais,
+          desde que o ativo seja analisado com critério. Elementos como
           engajamento real, consistência de audiência e aderência ao nicho são
-          determinantes para o sucesso da operação.
+          determinantes.
         </p>
 
         <p>
-          Esta página foi estruturada para apresentar dados claros e facilitar a
-          tomada de decisão, conectando você diretamente com a oportunidade mais
-          adequada ao seu objetivo.
+          Esta página apresenta os dados essenciais para uma decisão mais segura,
+          conectando você diretamente ao ativo disponível e ao atendimento para
+          negociação.
         </p>
       </section>
     </main>
   );
 }
 
-/* COMPONENTE DE MÉTRICA */
-function Metric({ title, value }: { title: string; value?: string }) {
+/* COMPONENTE */
+function Metric({
+  title,
+  value,
+}: {
+  title: string;
+  value?: string;
+}) {
   return (
     <div
       style={{
         background: "#020617",
         padding: "14px",
         borderRadius: "14px",
-        border: "1px solid rgba(255,255,255,0.06)"
+        border: "1px solid rgba(255,255,255,0.06)",
       }}
     >
       <div style={{ fontSize: "12px", color: "#64748b" }}>{title}</div>
