@@ -106,7 +106,13 @@ export default async function ProdutoPage({ params }: PageProps) {
   };
 
   return (
-    <main className="produto-page">
+    <main
+      style={{
+        backgroundColor: "#0f172a",
+        color: "#ffffff",
+        minHeight: "100vh",
+      }}
+    >
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -114,15 +120,43 @@ export default async function ProdutoPage({ params }: PageProps) {
         }}
       />
 
-      <section className="produto-container produto-topo">
-        <div className="breadcrumb">
-          <Link href="/" className="breadcrumb-link">
+      <section
+        style={{
+          maxWidth: "1200px",
+          margin: "0 auto",
+          padding: "56px 24px 40px 24px",
+        }}
+      >
+        <div
+          style={{
+            color: "#94a3b8",
+            fontSize: "14px",
+            marginBottom: "24px",
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "8px",
+            alignItems: "center",
+          }}
+        >
+          <Link
+            href="/"
+            style={{
+              color: "#94a3b8",
+              textDecoration: "none",
+            }}
+          >
             Início
           </Link>
 
           <span>/</span>
 
-          <Link href={categoryHref} className="breadcrumb-link">
+          <Link
+            href={categoryHref}
+            style={{
+              color: "#94a3b8",
+              textDecoration: "none",
+            }}
+          >
             {platformLabel}
           </Link>
 
@@ -131,16 +165,66 @@ export default async function ProdutoPage({ params }: PageProps) {
           <span>{product.title}</span>
         </div>
 
-        <div className="produto-grid">
-          <div className="produto-main">
-            <div className="produto-badge">Marketplace de ativos digitais</div>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "minmax(0, 1.15fr) minmax(320px, 0.85fr)",
+            gap: "32px",
+            alignItems: "start",
+          }}
+        >
+          <div>
+            <div
+              style={{
+                display: "inline-block",
+                padding: "7px 12px",
+                borderRadius: "999px",
+                backgroundColor: "rgba(255,255,255,0.06)",
+                color: "#cbd5e1",
+                fontSize: "12px",
+                fontWeight: 700,
+                letterSpacing: "0.06em",
+                textTransform: "uppercase",
+                marginBottom: "14px",
+              }}
+            >
+              Marketplace de ativos digitais
+            </div>
 
-            <h1 className="produto-title">{product.title}</h1>
+            <h1
+              style={{
+                fontSize: "52px",
+                lineHeight: 1.04,
+                letterSpacing: "-0.04em",
+                margin: "0 0 18px 0",
+                maxWidth: "900px",
+              }}
+            >
+              {product.title}
+            </h1>
 
-            <p className="produto-description">{product.description}</p>
+            <p
+              style={{
+                color: "#cbd5e1",
+                fontSize: "18px",
+                lineHeight: 1.8,
+                margin: "0 0 24px 0",
+                maxWidth: "860px",
+              }}
+            >
+              {product.description}
+            </p>
 
             {product.image ? (
-              <div className="produto-image-wrap">
+              <div
+                style={{
+                  marginBottom: "24px",
+                  backgroundColor: "#020617",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                  borderRadius: "20px",
+                  overflow: "hidden",
+                }}
+              >
                 <img
                   src={product.image}
                   alt={
@@ -150,21 +234,54 @@ export default async function ProdutoPage({ params }: PageProps) {
                     (product.followers || "métricas estratégicas")
                   }
                   loading="lazy"
-                  className="produto-image"
+                  style={{
+                    display: "block",
+                    width: "100%",
+                    height: "auto",
+                  }}
                 />
               </div>
             ) : null}
 
-            <div className="metrics-grid">
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+                gap: "12px",
+                marginBottom: "24px",
+              }}
+            >
               <Metric title="Seguidores" value={product.followers || "-"} />
               <Metric title="Engajamento" value={product.engagement || "-"} />
               <Metric title="Nicho" value={product.niche || "-"} />
             </div>
 
-            <div className="info-card">
-              <h2 className="section-title">Destaques do ativo</h2>
+            <div
+              style={{
+                backgroundColor: "#020617",
+                border: "1px solid rgba(255,255,255,0.08)",
+                borderRadius: "20px",
+                padding: "22px",
+                marginBottom: "24px",
+              }}
+            >
+              <h2
+                style={{
+                  margin: "0 0 12px 0",
+                  fontSize: "24px",
+                }}
+              >
+                Destaques do ativo
+              </h2>
 
-              <ul className="highlights-list">
+              <ul
+                style={{
+                  margin: 0,
+                  paddingLeft: "20px",
+                  color: "#cbd5e1",
+                  lineHeight: 1.8,
+                }}
+              >
                 {product.highlights.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
@@ -172,25 +289,80 @@ export default async function ProdutoPage({ params }: PageProps) {
             </div>
           </div>
 
-          <aside className="produto-sidebar">
-            <div className="sidebar-label">Valor do ativo</div>
+          <aside
+            style={{
+              backgroundColor: "#020617",
+              border: "1px solid rgba(255,255,255,0.08)",
+              borderRadius: "24px",
+              padding: "28px",
+              height: "fit-content",
+            }}
+          >
+            <div
+              style={{
+                fontSize: "13px",
+                color: "#94a3b8",
+                textTransform: "uppercase",
+                letterSpacing: "0.06em",
+                marginBottom: "10px",
+              }}
+            >
+              Valor do ativo
+            </div>
 
-            <div className="sidebar-price">{product.price}</div>
+            <div
+              style={{
+                fontSize: "40px",
+                fontWeight: 800,
+                lineHeight: 1.05,
+                marginBottom: "20px",
+              }}
+            >
+              {product.price}
+            </div>
 
             <a
               href={whatsappHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="cta-primary"
+              style={{
+                display: "block",
+                backgroundColor: "#22c55e",
+                color: "#000000",
+                padding: "16px",
+                borderRadius: "999px",
+                textAlign: "center",
+                fontWeight: 800,
+                textDecoration: "none",
+                marginBottom: "12px",
+                fontSize: "16px",
+              }}
             >
               Comprar pelo WhatsApp
             </a>
 
-            <Link href={categoryHref} className="cta-secondary">
+            <Link
+              href={categoryHref}
+              style={{
+                display: "block",
+                border: "1px solid #334155",
+                padding: "14px",
+                borderRadius: "999px",
+                textAlign: "center",
+                color: "#ffffff",
+                textDecoration: "none",
+                marginBottom: "18px",
+              }}
+            >
               Ver mais contas
             </Link>
 
-            <div className="miniinfo-grid">
+            <div
+              style={{
+                display: "grid",
+                gap: "10px",
+              }}
+            >
               <MiniInfo label="Plataforma" value={platformLabel} />
               <MiniInfo
                 label="Seguidores"
@@ -202,366 +374,163 @@ export default async function ProdutoPage({ params }: PageProps) {
               />
             </div>
 
-            <div className="sidebar-note">
+            <div
+              style={{
+                marginTop: "18px",
+                fontSize: "13px",
+                color: "#64748b",
+                textAlign: "center",
+              }}
+            >
               Atendimento rápido • Entrega segura
             </div>
           </aside>
         </div>
       </section>
 
-      <section className="produto-container produto-seo">
-        <h2 className="seo-title">
+      <section
+        style={{
+          maxWidth: "900px",
+          margin: "0 auto",
+          padding: "0 24px 36px 24px",
+          color: "#cbd5e1",
+        }}
+      >
+        <h2
+          style={{
+            fontSize: "28px",
+            margin: "0 0 12px 0",
+          }}
+        >
           Vale a pena comprar conta {platformLabel}?
         </h2>
 
-        <p className="seo-text">
+        <p
+          style={{
+            lineHeight: 1.9,
+            margin: "0 0 16px 0",
+          }}
+        >
           Comprar conta {platformLabel} pode acelerar resultados digitais, desde
           que o ativo seja analisado com critério. Engajamento real,
           consistência de audiência, aderência ao nicho e potencial comercial
           são fatores decisivos.
         </p>
 
-        <p className="seo-text">
+        <p
+          style={{
+            lineHeight: 1.9,
+            margin: 0,
+          }}
+        >
           Esta página reúne os dados essenciais para uma decisão mais segura e
           conecta você diretamente ao ativo disponível para negociação.
         </p>
       </section>
 
       {relatedProducts.length > 0 ? (
-        <section className="produto-container produto-related">
-          <div className="related-head">
-            <div className="related-kicker">Interlink estratégico</div>
-            <h2 className="related-title">
+        <section
+          style={{
+            maxWidth: "1200px",
+            margin: "0 auto",
+            padding: "0 24px 80px 24px",
+          }}
+        >
+          <div
+            style={{
+              marginBottom: "18px",
+            }}
+          >
+            <div
+              style={{
+                fontSize: "11px",
+                textTransform: "uppercase",
+                letterSpacing: "0.06em",
+                color: "#94a3b8",
+                marginBottom: "8px",
+              }}
+            >
+              Interlink estratégico
+            </div>
+
+            <h2
+              style={{
+                fontSize: "36px",
+                lineHeight: 1.04,
+                margin: 0,
+              }}
+            >
               Outras contas de {platformLabel}
             </h2>
           </div>
 
-          <div className="related-grid">
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+              gap: "18px",
+            }}
+          >
             {relatedProducts.map((item) => (
               <Link
                 key={item.slug}
                 href={"/produto/" + item.slug}
-                className="related-card"
+                style={{
+                  display: "block",
+                  backgroundColor: "#020617",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                  borderRadius: "20px",
+                  padding: "20px",
+                  color: "#ffffff",
+                  textDecoration: "none",
+                }}
               >
-                <div className="related-platform">
+                <div
+                  style={{
+                    fontSize: "12px",
+                    color: "#94a3b8",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.06em",
+                    marginBottom: "10px",
+                  }}
+                >
                   {getPlatformLabel(item.platform)}
                 </div>
 
-                <h3 className="related-card-title">{item.title}</h3>
+                <h3
+                  style={{
+                    margin: "0 0 10px 0",
+                    fontSize: "22px",
+                    lineHeight: 1.1,
+                  }}
+                >
+                  {item.title}
+                </h3>
 
-                <p className="related-card-text">{item.description}</p>
+                <p
+                  style={{
+                    margin: "0 0 14px 0",
+                    color: "#cbd5e1",
+                    lineHeight: 1.7,
+                    fontSize: "15px",
+                  }}
+                >
+                  {item.description}
+                </p>
 
-                <div className="related-card-price">{item.price}</div>
+                <div
+                  style={{
+                    fontSize: "24px",
+                    fontWeight: 800,
+                  }}
+                >
+                  {item.price}
+                </div>
               </Link>
             ))}
           </div>
         </section>
       ) : null}
-
-      <style jsx>{`
-        .produto-page {
-          background: #0f172a;
-          color: #ffffff;
-          min-height: 100vh;
-        }
-
-        .produto-container {
-          max-width: 1200px;
-          margin: 0 auto;
-          padding-left: 24px;
-          padding-right: 24px;
-        }
-
-        .produto-topo {
-          padding-top: 56px;
-          padding-bottom: 40px;
-        }
-
-        .breadcrumb {
-          color: #94a3b8;
-          font-size: 14px;
-          margin-bottom: 24px;
-          display: flex;
-          flex-wrap: wrap;
-          gap: 8px;
-          align-items: center;
-        }
-
-        .breadcrumb-link {
-          color: #94a3b8;
-          text-decoration: none;
-        }
-
-        .produto-grid {
-          display: grid;
-          grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
-          gap: 32px;
-          align-items: start;
-        }
-
-        .produto-badge {
-          display: inline-block;
-          padding: 7px 12px;
-          border-radius: 999px;
-          background: rgba(255, 255, 255, 0.06);
-          color: #cbd5e1;
-          font-size: 12px;
-          font-weight: 700;
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
-          margin-bottom: 14px;
-        }
-
-        .produto-title {
-          font-size: 52px;
-          line-height: 1.04;
-          letter-spacing: -0.04em;
-          margin: 0 0 18px 0;
-          max-width: 900px;
-        }
-
-        .produto-description {
-          color: #cbd5e1;
-          font-size: 18px;
-          line-height: 1.8;
-          margin: 0 0 24px 0;
-          max-width: 860px;
-        }
-
-        .produto-image-wrap {
-          margin-bottom: 24px;
-          background: #020617;
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          border-radius: 20px;
-          overflow: hidden;
-        }
-
-        .produto-image {
-          display: block;
-          width: 100%;
-          height: auto;
-        }
-
-        .metrics-grid {
-          display: grid;
-          grid-template-columns: repeat(3, minmax(0, 1fr));
-          gap: 12px;
-          margin-bottom: 24px;
-        }
-
-        .info-card {
-          background: #020617;
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          border-radius: 20px;
-          padding: 22px;
-          margin-bottom: 24px;
-        }
-
-        .section-title {
-          margin: 0 0 12px 0;
-          font-size: 24px;
-        }
-
-        .highlights-list {
-          margin: 0;
-          padding-left: 20px;
-          color: #cbd5e1;
-          line-height: 1.8;
-        }
-
-        .produto-sidebar {
-          background: #020617;
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          border-radius: 24px;
-          padding: 28px;
-          height: fit-content;
-          position: sticky;
-          top: 24px;
-        }
-
-        .sidebar-label {
-          font-size: 13px;
-          color: #94a3b8;
-          text-transform: uppercase;
-          letter-spacing: 0.06em;
-          margin-bottom: 10px;
-        }
-
-        .sidebar-price {
-          font-size: 40px;
-          font-weight: 800;
-          line-height: 1.05;
-          margin-bottom: 20px;
-        }
-
-        .cta-primary {
-          display: block;
-          background: #22c55e;
-          color: #000000;
-          padding: 16px;
-          border-radius: 999px;
-          text-align: center;
-          font-weight: 800;
-          text-decoration: none;
-          margin-bottom: 12px;
-          font-size: 16px;
-        }
-
-        .cta-secondary {
-          display: block;
-          border: 1px solid #334155;
-          padding: 14px;
-          border-radius: 999px;
-          text-align: center;
-          color: #ffffff;
-          text-decoration: none;
-          margin-bottom: 18px;
-        }
-
-        .miniinfo-grid {
-          display: grid;
-          gap: 10px;
-        }
-
-        .sidebar-note {
-          margin-top: 18px;
-          font-size: 13px;
-          color: #64748b;
-          text-align: center;
-        }
-
-        .produto-seo {
-          max-width: 900px;
-          padding-bottom: 36px;
-          color: #cbd5e1;
-        }
-
-        .seo-title {
-          font-size: 28px;
-          margin: 0 0 12px 0;
-        }
-
-        .seo-text {
-          line-height: 1.9;
-          margin: 0 0 16px 0;
-        }
-
-        .produto-related {
-          padding-bottom: 80px;
-        }
-
-        .related-head {
-          margin-bottom: 18px;
-        }
-
-        .related-kicker {
-          font-size: 11px;
-          text-transform: uppercase;
-          letter-spacing: 0.06em;
-          color: #94a3b8;
-          margin-bottom: 8px;
-        }
-
-        .related-title {
-          font-size: 36px;
-          line-height: 1.04;
-          margin: 0;
-        }
-
-        .related-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-          gap: 18px;
-        }
-
-        .related-card {
-          display: block;
-          background: #020617;
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          border-radius: 20px;
-          padding: 20px;
-          color: #ffffff;
-          text-decoration: none;
-        }
-
-        .related-platform {
-          font-size: 12px;
-          color: #94a3b8;
-          text-transform: uppercase;
-          letter-spacing: 0.06em;
-          margin-bottom: 10px;
-        }
-
-        .related-card-title {
-          margin: 0 0 10px 0;
-          font-size: 22px;
-          line-height: 1.1;
-        }
-
-        .related-card-text {
-          margin: 0 0 14px 0;
-          color: #cbd5e1;
-          line-height: 1.7;
-          font-size: 15px;
-        }
-
-        .related-card-price {
-          font-size: 24px;
-          font-weight: 800;
-        }
-
-        @media (max-width: 980px) {
-          .produto-grid {
-            grid-template-columns: 1fr;
-          }
-
-          .produto-sidebar {
-            position: static;
-          }
-        }
-
-        @media (max-width: 700px) {
-          .produto-container {
-            padding-left: 16px;
-            padding-right: 16px;
-          }
-
-          .produto-topo {
-            padding-top: 32px;
-            padding-bottom: 28px;
-          }
-
-          .produto-title {
-            font-size: 34px;
-            line-height: 1.06;
-          }
-
-          .produto-description {
-            font-size: 16px;
-            line-height: 1.75;
-          }
-
-          .metrics-grid {
-            grid-template-columns: 1fr;
-          }
-
-          .sidebar-price {
-            font-size: 32px;
-          }
-
-          .related-title {
-            font-size: 28px;
-          }
-
-          .section-title {
-            font-size: 22px;
-          }
-
-          .seo-title {
-            font-size: 24px;
-          }
-        }
-      `}</style>
     </main>
   );
 }
@@ -574,30 +543,32 @@ function Metric({
   value: string;
 }) {
   return (
-    <div className="metric-card">
-      <div className="metric-title">{title}</div>
-      <div className="metric-value">{value}</div>
+    <div
+      style={{
+        backgroundColor: "#020617",
+        padding: "14px",
+        borderRadius: "12px",
+        border: "1px solid rgba(255,255,255,0.08)",
+      }}
+    >
+      <div
+        style={{
+          fontSize: "12px",
+          color: "#64748b",
+          marginBottom: "6px",
+        }}
+      >
+        {title}
+      </div>
 
-      <style jsx>{`
-        .metric-card {
-          background: #020617;
-          padding: 14px;
-          border-radius: 12px;
-          border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .metric-title {
-          font-size: 12px;
-          color: #64748b;
-          margin-bottom: 6px;
-        }
-
-        .metric-value {
-          font-size: 18px;
-          font-weight: 700;
-          color: #ffffff;
-        }
-      `}</style>
+      <div
+        style={{
+          fontSize: "18px",
+          fontWeight: 700,
+        }}
+      >
+        {value}
+      </div>
     </div>
   );
 }
@@ -610,32 +581,35 @@ function MiniInfo({
   value: string;
 }) {
   return (
-    <div className="miniinfo-card">
-      <div className="miniinfo-label">{label}</div>
-      <div className="miniinfo-value">{value}</div>
+    <div
+      style={{
+        backgroundColor: "rgba(255,255,255,0.03)",
+        border: "1px solid rgba(255,255,255,0.06)",
+        borderRadius: "14px",
+        padding: "12px 14px",
+      }}
+    >
+      <div
+        style={{
+          fontSize: "11px",
+          color: "#64748b",
+          marginBottom: "4px",
+          textTransform: "uppercase",
+          letterSpacing: "0.06em",
+        }}
+      >
+        {label}
+      </div>
 
-      <style jsx>{`
-        .miniinfo-card {
-          background: rgba(255, 255, 255, 0.03);
-          border: 1px solid rgba(255, 255, 255, 0.06);
-          border-radius: 14px;
-          padding: 12px 14px;
-        }
-
-        .miniinfo-label {
-          font-size: 11px;
-          color: #64748b;
-          margin-bottom: 4px;
-          text-transform: uppercase;
-          letter-spacing: 0.06em;
-        }
-
-        .miniinfo-value {
-          font-size: 15px;
-          font-weight: 700;
-          color: #ffffff;
-        }
-      `}</style>
+      <div
+        style={{
+          fontSize: "15px",
+          fontWeight: 700,
+          color: "#ffffff",
+        }}
+      >
+        {value}
+      </div>
     </div>
   );
 }
