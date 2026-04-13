@@ -4,12 +4,48 @@ import styles from "./page.module.css";
 export const metadata = {
   title: "Comprar conta Instagram | VendoContas",
   description:
-    "Comprar conta Instagram, BMs e ativos digitais com mais critério, análise e clareza na VendoContas.",
+    "Comprar conta Instagram, BMs, canais do YouTube e ativos digitais com análise, critérios e mais segurança na VendoContas.",
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Vale a pena comprar conta Instagram?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Pode valer a pena quando a conta tem nicho coerente, histórico consistente, audiência real e aderência comercial. A decisão depende de análise, não apenas de números soltos.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "O que avaliar antes de comprar conta Instagram?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "É essencial avaliar nicho, engajamento, histórico de conteúdo, consistência da audiência, risco de recuperação, potencial comercial e compatibilidade com a operação.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "A VendoContas trabalha apenas com Instagram?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Não. A plataforma também organiza BMs, canais do YouTube, contas TikTok, contas X/Twitter, Twitch e outras categorias de ativos digitais.",
+      },
+    },
+  ],
 };
 
 export default function HomePage() {
   return (
     <main className={styles.page}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+
       <section className={styles.hero}>
         <p className={styles.kicker}>Marketplace de ativos digitais</p>
 
@@ -29,7 +65,7 @@ export default function HomePage() {
           </Link>
 
           <a
-            href="https://wa.me/5583999691629?text=Ol%C3%A1%2C%20vim%20do%20site%20VendoContas%20e%20quero%20analisar%20as%20op%C3%A7%C3%B5es%20dispon%C3%ADveis."
+            href="https://wa.me/5583999691629?text=Ol%C3%A1%2C%20vim%20da%20VendoContas%20e%20quero%20entender%20as%20op%C3%A7%C3%B5es%20dispon%C3%ADveis."
             target="_blank"
             rel="noopener noreferrer"
             className={styles.secondaryButton}
@@ -39,58 +75,89 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className={styles.proofGrid}>
-        <article className={styles.proofCard}>
-          <h2>Estrutura organizada</h2>
-          <p>categorias e páginas indexáveis</p>
+      <section className={styles.benefits}>
+        <article className={styles.benefitCard}>
+          <h2>Análise mais clara</h2>
+          <p>
+            Nicho, contexto, estrutura e aderência comercial importam mais do
+            que números soltos.
+          </p>
         </article>
 
-        <article className={styles.proofCard}>
-          <h2>Mais clareza</h2>
-          <p>nicho, métricas e contexto</p>
+        <article className={styles.benefitCard}>
+          <h2>Decisão menos impulsiva</h2>
+          <p>
+            A navegação foi pensada para reduzir ruído e facilitar comparação
+            entre categorias e ativos.
+          </p>
         </article>
 
-        <article className={styles.proofCard}>
+        <article className={styles.benefitCard}>
           <h2>Foco em operação</h2>
-          <p>ativos para escala e audiência</p>
+          <p>
+            Ativos voltados para crescimento, monetização, contingência,
+            audiência e posicionamento.
+          </p>
         </article>
       </section>
 
       <section className={styles.section}>
         <p className={styles.sectionKicker}>Categorias principais</p>
         <h2 className={styles.sectionTitle}>
-          Principais categorias de ativos digitais
+          Explore os principais tipos de ativos digitais
         </h2>
+        <p className={styles.sectionDescription}>
+          Navegue pelas categorias centrais da plataforma e encontre estruturas
+          voltadas para monetização, audiência, contingência e presença digital.
+        </p>
 
         <div className={styles.categoryGrid}>
           <Link href="/categoria/instagram" className={styles.categoryCard}>
             <h3>Contas de Instagram</h3>
-            <p>Perfis prontos para crescimento e monetização.</p>
+            <p>
+              Perfis voltados para crescimento, autoridade, venda e
+              monetização.
+            </p>
           </Link>
 
           <Link href="/categoria/bms" className={styles.categoryCard}>
             <h3>BMs para contingência</h3>
-            <p>Estrutura para continuidade operacional.</p>
+            <p>
+              Estruturas úteis para continuidade operacional e campanhas de
+              tráfego.
+            </p>
           </Link>
 
           <Link href="/categoria/youtube" className={styles.categoryCard}>
             <h3>Canais do YouTube</h3>
-            <p>Histórico, audiência e monetização.</p>
+            <p>
+              Canais com histórico, audiência e potencial comercial para
+              conteúdo e distribuição.
+            </p>
           </Link>
 
           <Link href="/categoria/tiktok" className={styles.categoryCard}>
             <h3>Contas TikTok</h3>
-            <p>Distribuição rápida e alcance orgânico.</p>
+            <p>
+              Perfis com nicho, conteúdo e potencial de alcance para entrada
+              mais rápida na plataforma.
+            </p>
           </Link>
 
           <Link href="/categoria/twitter" className={styles.categoryCard}>
             <h3>Contas X / Twitter</h3>
-            <p>Posicionamento, influência e narrativa.</p>
+            <p>
+              Ativos úteis para influência, opinião, narrativa e presença
+              pública.
+            </p>
           </Link>
 
           <Link href="/categoria/jogos" className={styles.categoryCard}>
             <h3>Contas de jogos</h3>
-            <p>Mercado gamer, progressão e comunidade.</p>
+            <p>
+              Contas gamer com comunidade, progressão e valor percebido em
+              nichos específicos.
+            </p>
           </Link>
         </div>
       </section>
@@ -107,10 +174,56 @@ export default function HomePage() {
         </p>
 
         <p>
-          Por isso, a VendoContas foi organizada para facilitar leitura de
-          categorias, produtos e critérios relevantes para quem quer comprar
-          ativos digitais com mais objetividade.
+          A plataforma foi organizada para concentrar informação útil e reduzir
+          decisões impulsivas. Em vez de olhar apenas para seguidores, o foco
+          precisa estar na qualidade do ativo e no encaixe com a estratégia.
         </p>
+      </section>
+
+      <section className={styles.textBlock}>
+        <p className={styles.sectionKicker}>Intenção de busca</p>
+        <h2 className={styles.sectionTitle}>
+          O que avaliar antes de comprar conta Instagram
+        </h2>
+
+        <ul className={styles.list}>
+          <li>Nicho e coerência da audiência</li>
+          <li>Engajamento real e histórico de conteúdo</li>
+          <li>Potencial comercial do ativo</li>
+          <li>Risco de recuperação e estabilidade</li>
+          <li>Compatibilidade com a sua operação</li>
+        </ul>
+      </section>
+
+      <section className={styles.faqSection}>
+        <p className={styles.sectionKicker}>Perguntas frequentes</p>
+        <h2 className={styles.sectionTitle}>Dúvidas comuns sobre compra de ativos</h2>
+
+        <div className={styles.faqGrid}>
+          <article className={styles.faqCard}>
+            <h3>Vale a pena comprar conta Instagram?</h3>
+            <p>
+              Pode valer a pena quando há aderência entre ativo, nicho,
+              audiência e operação. O ponto central é análise, não impulso.
+            </p>
+          </article>
+
+          <article className={styles.faqCard}>
+            <h3>O que pesa mais na análise?</h3>
+            <p>
+              Contexto do perfil, histórico, recorrência, audiência, potencial
+              de monetização e estabilidade do ativo.
+            </p>
+          </article>
+
+          <article className={styles.faqCard}>
+            <h3>A plataforma tem outras categorias?</h3>
+            <p>
+              Sim. Além de Instagram, a VendoContas também organiza BMs, canais
+              do YouTube, TikTok, X/Twitter, Twitch e jogos.
+            </p>
+          </article>
+        </div>
       </section>
 
       <section className={styles.finalCta}>
