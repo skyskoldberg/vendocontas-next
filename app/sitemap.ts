@@ -1,38 +1,3 @@
-[17:08, 13/04/2026] Launch Agency: import { MetadataRoute } from "next";
-import { getAllPosts } from "@/lib/posts";
-
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://vendocontas.com";
-
-  const posts = getAllPosts();
-
-  const postUrls = posts.map((post) => ({
-    url: ${baseUrl}/blog/${post.slug},
-    lastModified: new Date(),
-  }));
-
-  return [
-    {
-      url: ${baseUrl}/,
-      lastModified: new Date(),
-    },
-    {
-      url: ${baseUrl}/blog,
-      lastModified: new Date(),
-    },
-
-    // categorias (SEO forte)
-    {
-      url: ${baseUrl}/categoria/instagram,
-      lastModified: new Date(),
-    },
-    {
-      url: ${baseUrl}/categoria/bms,
-      lastModified: new Date(),
-    },
-    {
-      url: ${baseUrl}/categoria/youtube,
-      lastModified: new Date(…
 [17:13, 13/04/2026] Launch Agency: import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -68,69 +33,68 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: ${baseUrl}/categoria/youtube,
       lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.85,
+      change…
+[17:20, 13/04/2026] Launch Agency: import type { MetadataRoute } from "next";
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const now = new Date();
+
+  return [
+    {
+      url: "https://vendocontas.com",
+      lastModified: now,
+      changeFrequency: "daily",
+      priority: 1,
     },
     {
-      url: ${baseUrl}/categoria/tiktok,
+      url: "https://vendocontas.com/blog",
       lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.85,
-    },
-    {
-      url: ${baseUrl}/categoria/twitch,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: ${baseUrl}/categoria/twitter,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: ${baseUrl}/categoria/jogos,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.8,
+      changeFrequency: "daily",
+      priority: 0.9,
     },
 
+    // CATEGORIAS
     {
-      url: ${baseUrl}/blog/comprar-conta-instagram-10k-gratis,
+      url: "https://vendocontas.com/categoria/instagram",
       lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
+      changeFrequency: "daily",
+      priority: 0.95,
     },
     {
-      url: ${baseUrl}/blog/comprar-conta-instagram-antiga,
+      url: "https://vendocontas.com/categoria/bms",
       lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
+      changeFrequency: "daily",
+      priority: 0.9,
     },
     {
-      url: ${baseUrl}/blog/comprar-conta-instagram-followers,
+      url: "https://vendocontas.com/categoria/youtube",
       lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
+      changeFrequency: "daily",
+      priority: 0.9,
     },
     {
-      url: ${baseUrl}/blog/comprar-canal-youtube,
+      url: "https://vendocontas.com/categoria/tiktok",
       lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
+      changeFrequency: "daily",
+      priority: 0.9,
     },
     {
-      url: ${baseUrl}/blog/comprar-conta-x-twitter,
+      url: "https://vendocontas.com/categoria/twitch",
       lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
+      changeFrequency: "daily",
+      priority: 0.85,
     },
     {
-      url: ${baseUrl}/blog/comprar-conta-de-jogos,
+      url: "https://vendocontas.com/categoria/twitter",
       lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
+      changeFrequency: "daily",
+      priority: 0.9,
+    },
+    {
+      url: "https://vendocontas.com/categoria/jogos",
+      lastModified: now,
+      changeFrequency: "daily",
+      priority: 0.85,
     },
   ];
 }
