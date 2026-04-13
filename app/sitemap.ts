@@ -1,42 +1,57 @@
-import type { MetadataRoute } from "next";
+import { MetadataRoute } from "next";
+import { getAllPosts } from "@/lib/posts";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = "https://vendocontas.com";
+
+  const posts = getAllPosts();
+
+  const postUrls = posts.map((post) => ({
+    url: ${baseUrl}/blog/${post.slug},
+    lastModified: new Date(),
+  }));
+
   return [
     {
-      url: "https://vendocontas.com",
+      url: ${baseUrl}/,
       lastModified: new Date(),
     },
     {
-      url: "https://vendocontas.com/blog",
+      url: ${baseUrl}/blog,
+      lastModified: new Date(),
+    },
+
+    // categorias (SEO forte)
+    {
+      url: ${baseUrl}/categoria/instagram,
       lastModified: new Date(),
     },
     {
-      url: "https://vendocontas.com/categoria/instagram",
+      url: ${baseUrl}/categoria/bms,
       lastModified: new Date(),
     },
     {
-      url: "https://vendocontas.com/categoria/bm-facebook",
+      url: ${baseUrl}/categoria/youtube,
       lastModified: new Date(),
     },
     {
-      url: "https://vendocontas.com/categoria/youtube",
+      url: ${baseUrl}/categoria/tiktok,
       lastModified: new Date(),
     },
     {
-      url: "https://vendocontas.com/categoria/tiktok",
+      url: ${baseUrl}/categoria/twitch,
       lastModified: new Date(),
     },
     {
-      url: "https://vendocontas.com/categoria/twitch",
+      url: ${baseUrl}/categoria/twitter,
       lastModified: new Date(),
     },
     {
-      url: "https://vendocontas.com/categoria/x-twitter",
+      url: ${baseUrl}/categoria/jogos,
       lastModified: new Date(),
     },
-    {
-      url: "https://vendocontas.com/categoria/jogos",
-      lastModified: new Date(),
-    },
+
+    // 🔥 BLOG POSTS (isso faltava)
+    ...postUrls,
   ];
 }
