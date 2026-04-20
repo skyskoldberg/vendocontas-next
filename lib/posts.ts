@@ -47,7 +47,13 @@ export function getAllPosts(): Post[] {
     ? (postsData as any).posts
     : [];
 
-  return rawPosts.map(normalizePost);
+  return rawPosts
+    .map(normalizePost)
+    .sort((a, b) => {
+      const dateA = a.date ? new Date(a.date).getTime() : 0;
+      const dateB = b.date ? new Date(b.date).getTime() : 0;
+      return dateB - dateA;
+    });
 }
 
 export function getPostBySlug(slug: string): Post | undefined {
