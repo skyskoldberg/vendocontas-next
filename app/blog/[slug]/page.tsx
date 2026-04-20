@@ -79,6 +79,30 @@ export default async function PostPage({
         </p>
       )}
 
+      {post.images && post.images.length > 0 && (
+        <div
+          style={{
+            marginBottom: "40px",
+            display: "grid",
+            gap: "20px",
+          }}
+        >
+          {post.images.map((image, index) => (
+            <img
+              key={index}
+              src={image.url}
+              alt={image.alt || post.title}
+              style={{
+                width: "100%",
+                height: "auto",
+                borderRadius: "16px",
+                display: "block",
+              }}
+            />
+          ))}
+        </div>
+      )}
+
       <article
         style={{ fontSize: "20px" }}
         dangerouslySetInnerHTML={{ __html: post.content }}
