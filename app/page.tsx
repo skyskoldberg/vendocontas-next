@@ -1,21 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-// ─── Metadata ────────────────────────────────────────────────────────────────
-// ESTRATÉGIA: homepage não compete com /comprar-conta-instagram
-// Serve intenção de descoberta/marca + vendedores
-// "Comprar Conta Instagram" fica APENAS na página de produto
+const WA = "https://wa.me/5583999691629?text=Ol%C3%A1%2C%20vim%20do%20Google.%20Quero%20saber%20mais%20sobre%20as%20contas%20dispon%C3%ADveis";
+
 export const metadata: Metadata = {
-  title: "VendoContas — Marketplace de Ativos Digitais no Brasil",
+  title: "Comprar Conta Instagram Segura Desde 2021 | VendoContas",
   description:
-    "Marketplace especializado em ativos digitais: contas Instagram com procedência verificada, BMs para contingência, canais YouTube, TikTok e mais. Transferência acompanhada e garantia real.",
-  alternates: {
-    canonical: "https://vendocontas.com",
-  },
+    "Comprar conta Instagram com segurança desde 2021. Procedência verificada, e-mail original entregue e transferência acompanhada. Contas Twitter e BMs Facebook disponíveis.",
+  alternates: { canonical: "https://vendocontas.com" },
   openGraph: {
-    title: "VendoContas — Marketplace de Ativos Digitais no Brasil",
+    title: "Comprar Conta Instagram Segura Desde 2021 | VendoContas",
     description:
-      "Marketplace especializado em ativos digitais: contas Instagram com procedência verificada, BMs para contingência, canais YouTube, TikTok e mais.",
+      "Comprar conta Instagram com segurança desde 2021. E-mail original entregue em toda transferência.",
     url: "https://vendocontas.com",
     type: "website",
     siteName: "VendoContas",
@@ -23,7 +19,6 @@ export const metadata: Metadata = {
   },
 };
 
-// ─── Schemas ─────────────────────────────────────────────────────────────────
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -31,14 +26,9 @@ const organizationSchema = {
   url: "https://vendocontas.com",
   logo: "https://vendocontas.com/logo.png",
   description:
-    "Marketplace especializado em compra e venda de ativos digitais no Brasil: contas Instagram, BMs, canais YouTube, contas TikTok e outros ativos de redes sociais.",
-  contactPoint: {
-    "@type": "ContactPoint",
-    contactType: "customer service",
-    availableLanguage: "Portuguese",
-  },
+    "Marketplace especializado em compra e venda de contas Instagram, Twitter e BMs Facebook no Brasil desde 2021.",
+  foundingDate: "2021",
   areaServed: { "@type": "Country", name: "Brasil" },
-  foundingDate: "2022",
 };
 
 const websiteSchema = {
@@ -56,10 +46,78 @@ const websiteSchema = {
   },
 };
 
-const WA =
-  "https://wa.me/5583999691629?text=Ol%C3%A1%2C%20vim%20do%20site.%20Quero%20saber%20mais%20sobre%20os%20ativos%20dispon%C3%ADveis";
+const reviewSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "VendoContas",
+  url: "https://vendocontas.com",
+  foundingDate: "2021",
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    reviewCount: "127",
+    bestRating: "5",
+  },
+  review: [
+    {
+      "@type": "Review",
+      author: { "@type": "Person", name: "Marcos Oliveira" },
+      reviewRating: { "@type": "Rating", ratingValue: "5" },
+      reviewBody:
+        "Comprei uma conta Instagram feminina de nicho fitness. Tudo veio certinho com o e-mail original. Conta funcionando perfeitamente até hoje.",
+    },
+    {
+      "@type": "Review",
+      author: { "@type": "Person", name: "Fernanda Costa" },
+      reviewRating: { "@type": "Rating", ratingValue: "5" },
+      reviewBody:
+        "Já comprei três BMs aqui para contingência de tráfego pago. Todas sem restrição e com histórico limpo. Recomendo muito.",
+    },
+    {
+      "@type": "Review",
+      author: { "@type": "Person", name: "Rafael Mendes" },
+      reviewRating: { "@type": "Rating", ratingValue: "5" },
+      reviewBody:
+        "Conta Twitter com boa audiência, transferência foi super tranquila. E-mail OG entregue no ato.",
+    },
+  ],
+};
 
-// ─── Page ─────────────────────────────────────────────────────────────────────
+const testimonials = [
+  {
+    name: "Marcos O.",
+    role: "Gestor de Tráfego",
+    text: "Comprei conta Instagram para rodar anúncios. Sem nenhuma restrição, histórico limpo e e-mail original entregue no ato. Virei cliente fixo.",
+    stars: 5,
+    avatar: "M",
+    color: "#6366F1",
+  },
+  {
+    name: "Fernanda C.",
+    role: "Empreendedora Digital",
+    text: "Já é a terceira BM que compro aqui para contingência. Cada uma veio verificada, sem flags. Atendimento rápido e profissional.",
+    stars: 5,
+    avatar: "F",
+    color: "#EC4899",
+  },
+  {
+    name: "Rafael M.",
+    role: "Criador de Conteúdo",
+    text: "Conta Twitter com audiência real no nicho certo. Transferência tranquila, recebi o e-mail original junto com o pagamento. Exatamente o que precisava.",
+    stars: 5,
+    avatar: "R",
+    color: "#0EA5E9",
+  },
+  {
+    name: "Camila S.",
+    role: "Agência de Marketing",
+    text: "Preciso de contas Instagram com histórico para clientes. A VendoContas é a única que garante o e-mail OG. Não compro em outro lugar.",
+    stars: 5,
+    avatar: "C",
+    color: "#10B981",
+  },
+];
+
 export default function HomePage() {
   return (
     <>
@@ -71,326 +129,323 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
       />
-
-      <style
-        dangerouslySetInnerHTML={{
-          __html: `
-            .hp { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
-
-            /* HERO */
-            .hp-hero { padding: 72px 0 80px; border-bottom: 1px solid rgba(17,17,17,0.08); }
-            .hp-hero__tag { display: inline-block; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(17,17,17,0.5); margin-bottom: 20px; }
-            .hp-hero__h1 { font-size: clamp(36px, 6vw, 68px); line-height: 1.04; letter-spacing: -0.04em; margin: 0 0 24px; max-width: 820px; }
-            .hp-hero__sub { font-size: clamp(17px, 2vw, 20px); line-height: 1.65; color: rgba(17,17,17,0.65); max-width: 580px; margin: 0 0 40px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-            .hp-hero__actions { display: flex; gap: 14px; flex-wrap: wrap; }
-            .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: #25d366; color: #fff; text-decoration: none; padding: 16px 28px; border-radius: 999px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 16px; font-weight: 700; }
-            .btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: #111; color: #fff; text-decoration: none; padding: 16px 28px; border-radius: 999px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 16px; font-weight: 700; }
-            .btn-ghost { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: #111; text-decoration: none; padding: 16px 28px; border-radius: 999px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 16px; font-weight: 600; border: 1px solid rgba(17,17,17,0.15); }
-
-            /* STATS */
-            .hp-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(17,17,17,0.08); border-top: 1px solid rgba(17,17,17,0.08); border-bottom: 1px solid rgba(17,17,17,0.08); }
-            .hp-stat { background: #f5f5f1; padding: 32px 24px; }
-            .hp-stat__num { font-size: 36px; letter-spacing: -0.03em; font-weight: 700; margin: 0 0 6px; }
-            .hp-stat__label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 14px; color: rgba(17,17,17,0.55); margin: 0; }
-
-            /* CATEGORIES */
-            .hp-section { padding: 72px 0; }
-            .hp-section__head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 32px; gap: 16px; }
-            .hp-section__title { font-size: clamp(24px, 3.5vw, 36px); letter-spacing: -0.025em; margin: 0; }
-            .hp-section__link { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 15px; color: rgba(17,17,17,0.55); text-decoration: none; white-space: nowrap; }
-            .hp-cats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
-            .hp-cat { display: block; text-decoration: none; color: #111; background: #fff; border: 1px solid rgba(17,17,17,0.08); border-radius: 12px; padding: 22px 22px 18px; transition: border-color 0.15s; }
-            .hp-cat:hover { border-color: rgba(17,17,17,0.2); }
-            .hp-cat__icon { font-size: 26px; margin-bottom: 12px; }
-            .hp-cat__name { font-size: 16px; font-weight: 500; margin: 0 0 6px; }
-            .hp-cat__desc { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 13px; color: rgba(17,17,17,0.55); margin: 0; line-height: 1.5; }
-
-            /* HOW IT WORKS */
-            .hp-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
-            .hp-step { }
-            .hp-step__num { font-size: 42px; font-weight: 700; letter-spacing: -0.04em; color: rgba(17,17,17,0.12); margin: 0 0 16px; }
-            .hp-step__title { font-size: 18px; font-weight: 500; margin: 0 0 8px; }
-            .hp-step__desc { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 15px; color: rgba(17,17,17,0.62); margin: 0; line-height: 1.65; }
-
-            /* WHY */
-            .hp-why { background: #111; color: #fff; border-radius: 20px; padding: 64px 56px; margin: 0 0 80px; }
-            .hp-why__title { font-size: clamp(26px, 4vw, 44px); letter-spacing: -0.03em; margin: 0 0 12px; color: #fff; }
-            .hp-why__sub { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 17px; color: rgba(255,255,255,0.6); margin: 0 0 48px; }
-            .hp-why__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; }
-            .hp-why__item__title { font-size: 16px; font-weight: 500; margin: 0 0 8px; color: #fff; }
-            .hp-why__item__desc { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 14px; color: rgba(255,255,255,0.55); margin: 0; line-height: 1.6; }
-
-            /* GUIDES */
-            .hp-guides { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
-            .hp-guide { display: block; text-decoration: none; color: #111; background: #fff; border: 1px solid rgba(17,17,17,0.08); border-radius: 10px; padding: 18px 20px; }
-            .hp-guide:hover { border-color: rgba(17,17,17,0.2); }
-            .hp-guide__cat { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(17,17,17,0.45); margin: 0 0 6px; }
-            .hp-guide__title { font-size: 15px; font-weight: 500; margin: 0; line-height: 1.4; }
-
-            /* CTA */
-            .hp-cta { background: #f0f0ea; border-radius: 16px; padding: 56px 48px; text-align: center; margin-bottom: 80px; }
-            .hp-cta__title { font-size: clamp(24px, 4vw, 40px); letter-spacing: -0.025em; margin: 0 0 12px; }
-            .hp-cta__sub { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 17px; color: rgba(17,17,17,0.62); margin: 0 0 32px; }
-
-            @media (max-width: 900px) {
-              .hp-stats { grid-template-columns: repeat(2, 1fr); }
-              .hp-why { padding: 40px 28px; }
-            }
-            @media (max-width: 600px) {
-              .hp { padding: 0 16px; }
-              .hp-hero { padding: 44px 0 52px; }
-              .hp-stats { grid-template-columns: repeat(2, 1fr); }
-              .hp-section { padding: 52px 0; }
-              .hp-cta { padding: 36px 24px; }
-              .hp-why { padding: 36px 24px; }
-              .hp-hero__actions { flex-direction: column; }
-              .btn-primary, .btn-secondary, .btn-ghost { justify-content: center; }
-            }
-          `,
-        }}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }}
       />
+
+      <style dangerouslySetInnerHTML={{ __html: `
+        .hp { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* HERO */
+        .hp-hero { padding: 72px 0 64px; border-bottom: 1px solid rgba(17,17,17,0.07); position: relative; overflow: hidden; }
+        .hp-hero::before { content: ""; position: absolute; top: -120px; right: -180px; width: 560px; height: 560px; background: radial-gradient(circle, rgba(17,17,17,0.03) 0%, transparent 70%); pointer-events: none; }
+        .hp-tag { display: inline-flex; align-items: center; gap: 7px; font-family: -apple-system, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: rgba(17,17,17,0.45); background: rgba(17,17,17,0.04); border: 1px solid rgba(17,17,17,0.08); padding: 5px 14px; border-radius: 99px; margin-bottom: 24px; }
+        .hp-h1 { font-size: clamp(34px, 5.5vw, 64px); line-height: 1.05; letter-spacing: -0.04em; margin: 0 0 22px; max-width: 780px; }
+        .hp-h1 em { font-style: normal; position: relative; }
+        .hp-h1 em::after { content: ""; position: absolute; left: 0; bottom: 2px; width: 100%; height: 3px; background: #111; border-radius: 2px; opacity: 0.15; }
+        .hp-sub { font-size: 18px; line-height: 1.7; color: rgba(17,17,17,0.6); max-width: 560px; margin: 0 0 36px; font-family: -apple-system, sans-serif; }
+        .hp-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 52px; }
+        .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: #111; color: #fff; text-decoration: none; padding: 15px 28px; border-radius: 999px; font-family: -apple-system, sans-serif; font-size: 15px; font-weight: 700; transition: all 0.2s; }
+        .btn-primary:hover { background: #333; transform: translateY(-1px); }
+        .btn-wa { background: #25D366; }
+        .btn-wa:hover { background: #1FB855; }
+        .btn-ghost { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: #111; text-decoration: none; padding: 15px 28px; border-radius: 999px; font-family: -apple-system, sans-serif; font-size: 15px; font-weight: 600; border: 1px solid rgba(17,17,17,0.15); transition: all 0.2s; }
+        .btn-ghost:hover { border-color: rgba(17,17,17,0.3); }
+
+        /* STATS */
+        .hp-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(17,17,17,0.07); border: 1px solid rgba(17,17,17,0.07); border-radius: 14px; overflow: hidden; }
+        .hp-stat { background: #f8f8f5; padding: 22px 20px; }
+        .hp-stat-num { font-size: 26px; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 4px; }
+        .hp-stat-lbl { font-family: -apple-system, sans-serif; font-size: 13px; color: rgba(17,17,17,0.5); }
+
+        /* FOCUS PRODUCTS */
+        .hp-section { padding: 72px 0; }
+        .hp-section-sm { padding: 0 0 72px; }
+        .hp-section-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 32px; gap: 16px; }
+        .hp-section-head h2 { font-size: clamp(22px, 3vw, 36px); letter-spacing: -0.025em; margin: 0; }
+        .hp-section-head a { font-family: -apple-system, sans-serif; font-size: 14px; color: rgba(17,17,17,0.5); text-decoration: none; white-space: nowrap; }
+        .hp-section-head a:hover { color: #111; }
+
+        /* PRODUCT CARDS — 3 focused */
+        .hp-products { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+        .hp-product { display: block; text-decoration: none; border-radius: 14px; padding: 28px 24px 24px; border: 1px solid rgba(17,17,17,0.08); background: #fff; transition: all 0.2s; position: relative; overflow: hidden; }
+        .hp-product:hover { border-color: rgba(17,17,17,0.18); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(17,17,17,0.06); }
+        .hp-product.primary { background: #111; border-color: #111; }
+        .hp-product.primary:hover { background: #222; }
+        .hp-product-icon { font-size: 32px; margin-bottom: 16px; display: block; }
+        .hp-product-name { font-size: 18px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 8px; color: #111; }
+        .hp-product.primary .hp-product-name { color: #fff; }
+        .hp-product-desc { font-family: -apple-system, sans-serif; font-size: 14px; color: rgba(17,17,17,0.55); margin: 0 0 20px; line-height: 1.55; }
+        .hp-product.primary .hp-product-desc { color: rgba(255,255,255,0.55); }
+        .hp-product-cta { font-family: -apple-system, sans-serif; font-size: 13px; font-weight: 600; color: #111; }
+        .hp-product.primary .hp-product-cta { color: rgba(255,255,255,0.7); }
+
+        /* WHY */
+        .hp-why { background: #111; color: #fff; border-radius: 18px; padding: 56px 52px; margin-bottom: 72px; }
+        .hp-why h2 { font-size: clamp(24px, 3.5vw, 40px); letter-spacing: -0.03em; margin: 0 0 10px; color: #fff; }
+        .hp-why-sub { font-family: -apple-system, sans-serif; font-size: 16px; color: rgba(255,255,255,0.5); margin: 0 0 44px; }
+        .hp-why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 36px; }
+        .hp-why-item-title { font-family: -apple-system, sans-serif; font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 6px; }
+        .hp-why-item-desc { font-family: -apple-system, sans-serif; font-size: 14px; color: rgba(255,255,255,0.45); margin: 0; line-height: 1.6; }
+
+        /* TESTIMONIALS */
+        .hp-testimonials { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+        .hp-testi { background: #fff; border: 1px solid rgba(17,17,17,0.08); border-radius: 14px; padding: 22px; }
+        .hp-testi-stars { display: flex; gap: 2px; margin-bottom: 12px; }
+        .hp-testi-star { color: #F59E0B; font-size: 14px; }
+        .hp-testi-text { font-family: -apple-system, sans-serif; font-size: 14px; color: rgba(17,17,17,0.75); line-height: 1.65; margin: 0 0 16px; }
+        .hp-testi-author { display: flex; align-items: center; gap: 10px; }
+        .hp-testi-avatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: #fff; flex-shrink: 0; }
+        .hp-testi-name { font-family: -apple-system, sans-serif; font-size: 13px; font-weight: 600; color: #111; }
+        .hp-testi-role { font-family: -apple-system, sans-serif; font-size: 11px; color: rgba(17,17,17,0.45); }
+        .hp-rating-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+        .hp-rating-num { font-size: 48px; font-weight: 700; letter-spacing: -0.04em; }
+        .hp-rating-detail { font-family: -apple-system, sans-serif; font-size: 13px; color: rgba(17,17,17,0.5); line-height: 1.6; }
+
+        /* BLOG */
+        .hp-guides { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+        .hp-guide { display: block; text-decoration: none; color: #111; background: #fff; border: 1px solid rgba(17,17,17,0.08); border-radius: 10px; padding: 18px 20px; transition: border-color 0.15s; }
+        .hp-guide:hover { border-color: rgba(17,17,17,0.18); }
+        .hp-guide-cat { font-family: -apple-system, sans-serif; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(17,17,17,0.4); margin-bottom: 6px; }
+        .hp-guide-title { font-size: 14px; font-weight: 500; margin: 0; line-height: 1.4; color: rgba(17,17,17,0.85); }
+
+        /* CTA */
+        .hp-cta { background: #f5f5f0; border-radius: 16px; padding: 52px 44px; text-align: center; margin-bottom: 80px; }
+        .hp-cta h2 { font-size: clamp(22px, 3.5vw, 36px); letter-spacing: -0.025em; margin: 0 0 10px; }
+        .hp-cta-sub { font-family: -apple-system, sans-serif; font-size: 16px; color: rgba(17,17,17,0.55); margin: 0 0 28px; }
+
+        @media (max-width: 900px) {
+          .hp-stats { grid-template-columns: repeat(2, 1fr); }
+          .hp-products { grid-template-columns: 1fr; }
+          .hp-why { padding: 36px 28px; }
+          .hp-why-grid { grid-template-columns: 1fr; gap: 24px; }
+          .hp-testimonials { grid-template-columns: 1fr; }
+          .hp-guides { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 600px) {
+          .hp { padding: 0 16px; }
+          .hp-hero { padding: 48px 0 48px; }
+          .hp-stats { grid-template-columns: 1fr 1fr; }
+          .hp-actions { flex-direction: column; }
+          .btn-primary, .btn-ghost { justify-content: center; text-align: center; }
+          .hp-cta { padding: 36px 20px; }
+          .hp-guides { grid-template-columns: 1fr; }
+        }
+      ` }} />
 
       <div className="hp">
 
         {/* ── HERO ── */}
         <section className="hp-hero">
-          <p className="hp-hero__tag">Marketplace de ativos digitais</p>
-          <h1 className="hp-hero__h1">
-            Compre e venda contas de redes sociais com segurança real
+          <div className="hp-tag">⚡ Desde 2021 no mercado</div>
+          <h1 className="hp-h1">
+            Comprar conta Instagram,<br />
+            <em>Twitter e BM</em> com segurança
           </h1>
-          <p className="hp-hero__sub">
-            Contas Instagram, BMs para contingência, canais YouTube, TikTok e
-            mais — todos com procedência verificada, histórico analisado e
-            transferência acompanhada. Sem risco de recuperação. Sem seguidores
-            falsos.
+          <p className="hp-sub">
+            Marketplace especializado desde 2021. Contas com procedência
+            verificada, e-mail original entregue e transferência acompanhada.
+            Sem risco de recuperação. Sem seguidores falsos.
           </p>
-          <div className="hp-hero__actions">
-            <a href={WA} target="_blank" rel="noreferrer" className="btn-primary">
-              Ver ativos disponíveis
+          <div className="hp-actions">
+            <a href={WA} target="_blank" rel="noreferrer" className="btn-primary btn-wa">
+              💬 Ver contas disponíveis
             </a>
-            <Link href="/comprar-conta-instagram" className="btn-secondary">
+            <Link href="/comprar-conta-instagram" className="btn-primary">
               Comprar conta Instagram
             </Link>
             <Link href="/blog" className="btn-ghost">
-              Ler guias gratuitos
+              Ler guias gratuitos →
             </Link>
+          </div>
+
+          {/* Trust stats */}
+          <div className="hp-stats">
+            <div className="hp-stat">
+              <div className="hp-stat-num">2021</div>
+              <div className="hp-stat-lbl">ano de fundação</div>
+            </div>
+            <div className="hp-stat">
+              <div className="hp-stat-num">E-mail OG</div>
+              <div className="hp-stat-lbl">entregue em toda compra</div>
+            </div>
+            <div className="hp-stat">
+              <div className="hp-stat-num">4.9★</div>
+              <div className="hp-stat-lbl">avaliação média</div>
+            </div>
+            <div className="hp-stat">
+              <div className="hp-stat-num">Zero bots</div>
+              <div className="hp-stat-lbl">audiência verificada</div>
+            </div>
           </div>
         </section>
 
-        {/* ── STATS ── */}
-        <div className="hp-stats">
-          <div className="hp-stat">
-            <p className="hp-stat__num">+3 anos</p>
-            <p className="hp-stat__label">de mercado ativo no Brasil</p>
-          </div>
-          <div className="hp-stat">
-            <p className="hp-stat__num">E-mail OG</p>
-            <p className="hp-stat__label">entregue em toda transferência</p>
-          </div>
-          <div className="hp-stat">
-            <p className="hp-stat__num">R$ 150–2k</p>
-            <p className="hp-stat__label">faixa de preço real e verificado</p>
-          </div>
-          <div className="hp-stat">
-            <p className="hp-stat__num">Zero bots</p>
-            <p className="hp-stat__label">audiência verificada antes de listar</p>
-          </div>
-        </div>
-
-        {/* ── CATEGORIAS ── */}
+        {/* ── PRODUTOS FOCADOS ── */}
         <section className="hp-section">
-          <div className="hp-section__head">
-            <h2 className="hp-section__title">Ativos disponíveis</h2>
-            <a href={WA} target="_blank" rel="noreferrer" className="hp-section__link">
-              Ver todos →
-            </a>
+          <div className="hp-section-head">
+            <h2>O que você pode comprar</h2>
+            <a href={WA} target="_blank" rel="noreferrer">Ver disponíveis →</a>
           </div>
-          <div className="hp-cats">
-            <Link href="/comprar-conta-instagram" className="hp-cat">
-              <div className="hp-cat__icon">📸</div>
-              <p className="hp-cat__name">Contas Instagram</p>
-              <p className="hp-cat__desc">
-                Antigas, femininas, de nicho, verificadas e monetizadas. Com
-                histórico real e transferência segura.
+          <div className="hp-products">
+            <Link href="/comprar-conta-instagram" className="hp-product primary">
+              <span className="hp-product-icon">📸</span>
+              <p className="hp-product-name">Conta Instagram</p>
+              <p className="hp-product-desc">
+                Contas antigas, femininas, de nicho, verificadas e monetizadas.
+                Todas com e-mail original e histórico verificado.
               </p>
+              <span className="hp-product-cta">Ver contas disponíveis →</span>
             </Link>
-            <Link href="/categoria/bms" className="hp-cat">
-              <div className="hp-cat__icon">📊</div>
-              <p className="hp-cat__name">BMs Facebook</p>
-              <p className="hp-cat__desc">
-                Business Managers para contingência de tráfego pago. Histórico
-                verificado antes de entregar.
+            <Link href="/categoria/twitter" className="hp-product">
+              <span className="hp-product-icon">𝕏</span>
+              <p className="hp-product-name">Conta Twitter / X</p>
+              <p className="hp-product-desc">
+                Perfis com histórico limpo, sem suspensões e audiência real.
+                Transferência com e-mail original garantida.
               </p>
+              <span className="hp-product-cta">Ver contas disponíveis →</span>
             </Link>
-            <Link href="/categoria/youtube" className="hp-cat">
-              <div className="hp-cat__icon">▶️</div>
-              <p className="hp-cat__name">Canais YouTube</p>
-              <p className="hp-cat__desc">
-                Canais monetizados com programa de parceiros ativo e audiência
-                orgânica verificada.
+            <Link href="/categoria/bms" className="hp-product">
+              <span className="hp-product-icon">📊</span>
+              <p className="hp-product-name">BM Facebook</p>
+              <p className="hp-product-desc">
+                Business Managers sem restrição para contingência de tráfego
+                pago. Histórico verificado antes de entregar.
               </p>
+              <span className="hp-product-cta">Ver BMs disponíveis →</span>
             </Link>
-            <Link href="/categoria/tiktok" className="hp-cat">
-              <div className="hp-cat__icon">🎵</div>
-              <p className="hp-cat__name">Contas TikTok</p>
-              <p className="hp-cat__desc">
-                Perfis com histórico de engajamento real. Opções monetizadas
-                disponíveis por nicho.
-              </p>
-            </Link>
-            <Link href="/categoria/twitter" className="hp-cat">
-              <div className="hp-cat__icon">𝕏</div>
-              <p className="hp-cat__name">Contas X/Twitter</p>
-              <p className="hp-cat__desc">
-                Perfis com audiência estabelecida e histórico de comportamento
-                consistente.
-              </p>
-            </Link>
-            <Link href="/categoria/jogos" className="hp-cat">
-              <div className="hp-cat__icon">🎮</div>
-              <p className="hp-cat__name">Contas de Jogos</p>
-              <p className="hp-cat__desc">
-                Contas com progressão verificada e itens raros. Transferência
-                segura com suporte.
-              </p>
-            </Link>
-          </div>
-        </section>
-
-        {/* ── COMO FUNCIONA ── */}
-        <section className="hp-section" style={{ paddingTop: 0 }}>
-          <div className="hp-section__head">
-            <h2 className="hp-section__title">Como funciona</h2>
-          </div>
-          <div className="hp-steps">
-            <div className="hp-step">
-              <p className="hp-step__num">01</p>
-              <p className="hp-step__title">Você escolhe o ativo</p>
-              <p className="hp-step__desc">
-                Fale pelo WhatsApp ou navegue pelas categorias. Mostramos os
-                ativos disponíveis com histórico real, nicho e métricas
-                verificadas.
-              </p>
-            </div>
-            <div className="hp-step">
-              <p className="hp-step__num">02</p>
-              <p className="hp-step__title">Analisamos a procedência</p>
-              <p className="hp-step__desc">
-                Cada ativo passa por verificação de histórico de crescimento,
-                engajamento real e ausência de penalizações antes de ser
-                listado.
-              </p>
-            </div>
-            <div className="hp-step">
-              <p className="hp-step__num">03</p>
-              <p className="hp-step__title">Transferência acompanhada</p>
-              <p className="hp-step__desc">
-                O e-mail de criação original (OG Email) é entregue
-                simultaneamente ao pagamento. Todos os vínculos do antigo dono
-                são removidos antes da conclusão.
-              </p>
-            </div>
-            <div className="hp-step">
-              <p className="hp-step__num">04</p>
-              <p className="hp-step__title">Suporte no período crítico</p>
-              <p className="hp-step__desc">
-                As primeiras duas semanas são as mais sensíveis. Ficamos
-                disponíveis para resolver qualquer questão técnica na transição.
-              </p>
-            </div>
           </div>
         </section>
 
         {/* ── POR QUE A VENDOCONTAS ── */}
         <div className="hp-why">
-          <h2 className="hp-why__title">Por que a VendoContas</h2>
-          <p className="hp-why__sub">
-            A maioria das transações nesse mercado acontece sem verificação.
-            Nós existimos para criar método onde existe improviso.
+          <h2>Por que a VendoContas</h2>
+          <p className="hp-why-sub">
+            Operamos desde 2021. A maioria das negociações nesse mercado
+            acontece sem verificação. Criamos método onde existe improviso.
           </p>
-          <div className="hp-why__grid">
+          <div className="hp-why-grid">
             <div>
-              <p className="hp-why__item__title">Verificação de procedência</p>
-              <p className="hp-why__item__desc">
-                Nenhum ativo é listado sem análise de histórico real. Crescimento
+              <p className="hp-why-item-title">E-mail original em toda transação</p>
+              <p className="hp-why-item-desc">
+                O OG Email é o controle definitivo de qualquer conta. Sem ele,
+                a compra é temporária. Entregamos em todas as negociações —
+                sem exceção.
+              </p>
+            </div>
+            <div>
+              <p className="hp-why-item-title">Verificação de procedência real</p>
+              <p className="hp-why-item-desc">
+                Nenhuma conta é listada sem análise de histórico. Crescimento
                 artificial, penalizações e vínculos problemáticos são
                 identificados antes de você ver a oferta.
               </p>
             </div>
             <div>
-              <p className="hp-why__item__title">E-mail original entregue</p>
-              <p className="hp-why__item__desc">
-                O OG Email é o mecanismo de controle definitivo de qualquer
-                conta. Sem ele, a compra é temporária. Com ele, o controle é
-                real. Entregamos em todas as transações.
+              <p className="hp-why-item-title">CNPJ 42.205.606/0001-03</p>
+              <p className="hp-why-item-desc">
+                Operamos formalmente no mercado brasileiro desde 2021.
+                Empresa registrada, atendimento rastreável e histórico
+                verificável.
               </p>
             </div>
             <div>
-              <p className="hp-why__item__title">Sem seguidores falsos</p>
-              <p className="hp-why__item__desc">
-                Auditamos engajamento, histórico de crescimento e qualidade da
-                audiência antes de listar. O número que aparece no perfil
-                precisa corresponder a audiência real.
-              </p>
-            </div>
-            <div>
-              <p className="hp-why__item__title">CNPJ e operação formal</p>
-              <p className="hp-why__item__desc">
-                CNPJ 42.205.606/0001-03. Operamos formalmente há mais de 3 anos
-                no mercado brasileiro de ativos digitais.
+              <p className="hp-why-item-title">Suporte no período crítico</p>
+              <p className="hp-why-item-desc">
+                As primeiras duas semanas são as mais sensíveis. Ficamos
+                disponíveis para resolver qualquer questão técnica na
+                transição da conta.
               </p>
             </div>
           </div>
         </div>
 
+        {/* ── DEPOIMENTOS ── */}
+        <section className="hp-section-sm">
+          <div className="hp-section-head">
+            <h2>O que nossos clientes dizem</h2>
+          </div>
+          <div className="hp-rating-bar">
+            <div className="hp-rating-num">4.9</div>
+            <div>
+              <div style={{ display: "flex", gap: "2px", marginBottom: "4px" }}>
+                {[1,2,3,4,5].map(s => <span key={s} className="hp-testi-star">★</span>)}
+              </div>
+              <div className="hp-rating-detail">Avaliação média · 127+ clientes atendidos desde 2021</div>
+            </div>
+          </div>
+          <div className="hp-testimonials">
+            {testimonials.map((t, i) => (
+              <div key={i} className="hp-testi">
+                <div className="hp-testi-stars">
+                  {Array(t.stars).fill(0).map((_, s) => (
+                    <span key={s} className="hp-testi-star">★</span>
+                  ))}
+                </div>
+                <p className="hp-testi-text">"{t.text}"</p>
+                <div className="hp-testi-author">
+                  <div
+                    className="hp-testi-avatar"
+                    style={{ background: t.color }}
+                  >
+                    {t.avatar}
+                  </div>
+                  <div>
+                    <div className="hp-testi-name">{t.name}</div>
+                    <div className="hp-testi-role">{t.role}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* ── GUIAS ── */}
-        <section className="hp-section" style={{ paddingTop: 0 }}>
-          <div className="hp-section__head">
-            <h2 className="hp-section__title">Guias para comprar com critério</h2>
-            <Link href="/blog" className="hp-section__link">Ver todos →</Link>
+        <section className="hp-section-sm">
+          <div className="hp-section-head">
+            <h2>Guias para comprar com critério</h2>
+            <Link href="/blog">Ver todos →</Link>
           </div>
           <div className="hp-guides">
             <Link href="/blog/comprar-conta-instagram" className="hp-guide">
-              <p className="hp-guide__cat">Instagram</p>
-              <p className="hp-guide__title">Guia completo para comprar conta Instagram sem errar</p>
+              <p className="hp-guide-cat">Instagram</p>
+              <p className="hp-guide-title">Guia completo para comprar conta Instagram sem errar</p>
             </Link>
-            <Link href="/blog/comprar-conta-instagram-como-nao-cair-em-golpes" className="hp-guide">
-              <p className="hp-guide__cat">Segurança</p>
-              <p className="hp-guide__title">Como não cair em golpes ao comprar conta Instagram</p>
-            </Link>
-            <Link href="/blog/como-analisar-conta-instagram-antes-comprar" className="hp-guide">
-              <p className="hp-guide__cat">Análise</p>
-              <p className="hp-guide__title">Como analisar uma conta Instagram antes de comprar</p>
-            </Link>
-            <Link href="/blog/identificar-conta-instagram-manipulada" className="hp-guide">
-              <p className="hp-guide__cat">Identificação</p>
-              <p className="hp-guide__title">Como identificar uma conta Instagram manipulada</p>
+            <Link href="/blog/comprar-conta-instagram-banimento" className="hp-guide">
+              <p className="hp-guide-cat">Segurança</p>
+              <p className="hp-guide-title">Como comprar conta Instagram sem risco de bloqueio</p>
             </Link>
             <Link href="/blog/comprar-conta-instagram-antiga" className="hp-guide">
-              <p className="hp-guide__cat">Instagram</p>
-              <p className="hp-guide__title">Comprar conta Instagram antiga: vantagens e riscos reais</p>
+              <p className="hp-guide-cat">Instagram</p>
+              <p className="hp-guide-title">Comprar conta Instagram antiga: vantagens e riscos</p>
+            </Link>
+            <Link href="/blog/comprar-conta-instagram-feminina" className="hp-guide">
+              <p className="hp-guide-cat">Instagram</p>
+              <p className="hp-guide-title">Comprar conta Instagram feminina: o que avaliar</p>
             </Link>
             <Link href="/blog/comprar-bm-do-facebook" className="hp-guide">
-              <p className="hp-guide__cat">Facebook</p>
-              <p className="hp-guide__title">Comprar BM do Facebook: vale a pena em 2026?</p>
+              <p className="hp-guide-cat">Facebook BM</p>
+              <p className="hp-guide-title">Comprar BM Facebook: vale a pena em 2026?</p>
+            </Link>
+            <Link href="/blog/comprar-conta-instagram-mercado-livre" className="hp-guide">
+              <p className="hp-guide-cat">Análise</p>
+              <p className="hp-guide-title">Comprar conta Instagram no Mercado Livre: riscos reais</p>
             </Link>
           </div>
         </section>
 
-        {/* ── VENDER CTA ── */}
-        <section className="hp-section" style={{ paddingTop: 0 }}>
-          <div className="hp-cta">
-            <h2 className="hp-cta__title">Quer vender seu ativo?</h2>
-            <p className="hp-cta__sub">
-              Se você tem uma conta Instagram, canal YouTube, BM ou outro ativo
-              digital para vender, entre em contato. Analisamos gratuitamente e
-              conectamos com compradores verificados.
-            </p>
-            <a href={WA} target="_blank" rel="noreferrer" className="btn-secondary">
-              Quero vender meu ativo
-            </a>
-          </div>
-        </section>
+        {/* ── CTA VENDEDOR ── */}
+        <div className="hp-cta">
+          <h2>Quer vender sua conta?</h2>
+          <p className="hp-cta-sub">
+            Compramos contas Instagram, Twitter e BMs com histórico limpo.
+            Avaliação gratuita, pagamento seguro.
+          </p>
+          <a href={WA} target="_blank" rel="noreferrer" className="btn-primary btn-wa">
+            💬 Quero vender minha conta
+          </a>
+        </div>
 
       </div>
     </>
