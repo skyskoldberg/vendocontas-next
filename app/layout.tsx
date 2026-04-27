@@ -5,18 +5,18 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://vendocontas.com"),
   title: {
-    default: "VendoContas | Comprar Conta Instagram, BMs e Ativos Digitais",
+    default: "Comprar Conta Instagram Segura Desde 2021 | VendoContas",
     template: "%s | VendoContas",
   },
   description:
-    "Marketplace de ativos digitais com foco em comprar conta Instagram, BMs para contingência, canais do YouTube, contas TikTok, Twitch, X/Twitter e contas de jogos.",
+    "Comprar conta Instagram com segurança desde 2021. Procedência verificada, e-mail original entregue e transferência acompanhada. Contas Twitter e BMs Facebook disponíveis.",
   alternates: {
     canonical: "https://vendocontas.com",
   },
   openGraph: {
-    title: "VendoContas | Comprar Conta Instagram, BMs e Ativos Digitais",
+    title: "Comprar Conta Instagram Segura Desde 2021 | VendoContas",
     description:
-      "Marketplace de ativos digitais com foco em comprar conta Instagram, BMs para contingência, canais do YouTube, contas TikTok, Twitch, X/Twitter e contas de jogos.",
+      "Comprar conta Instagram com segurança desde 2021. Procedência verificada, e-mail original entregue e transferência acompanhada.",
     url: "https://vendocontas.com",
     siteName: "VendoContas",
     locale: "pt_BR",
@@ -174,7 +174,7 @@ export default function RootLayout({
               }
 
               .vc-footer__text {
-                margin: 0 0 18px 0;
+                margin: 0 0 12px 0;
                 font-size: 16px;
                 line-height: 1.7;
                 color: rgba(17, 17, 17, 0.72);
@@ -182,9 +182,16 @@ export default function RootLayout({
               }
 
               .vc-footer__cnpj {
+                margin: 0 0 6px 0;
+                font-size: 15px;
+                color: rgba(17, 17, 17, 0.55);
+              }
+
+              .vc-footer__since {
                 margin: 0;
-                font-size: 16px;
-                color: rgba(17, 17, 17, 0.62);
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+                font-size: 15px;
+                color: rgba(17, 17, 17, 0.55);
               }
 
               .vc-footer__heading {
@@ -205,6 +212,8 @@ export default function RootLayout({
                 text-decoration: none;
                 color: #111111;
                 line-height: 1.4;
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+                font-size: 15px;
               }
 
               .vc-footer__bottom {
@@ -326,13 +335,6 @@ export default function RootLayout({
                   font-size: 24px;
                 }
 
-                .vc-footer__text,
-                .vc-footer__cnpj,
-                .vc-footer__bottom,
-                .vc-footer__links a {
-                  font-size: 15px;
-                }
-
                 .vc-float {
                   right: 14px;
                   bottom: calc(84px + env(safe-area-inset-bottom));
@@ -344,25 +346,22 @@ export default function RootLayout({
           }}
         />
 
+        {/* ── HEADER ── */}
         <header className="vc-header">
           <div className="vc-header__inner">
             <Link href="/" className="vc-brand">
               <div className="vc-brand__title">VendoContas</div>
               <p className="vc-brand__subtitle">
-                Comprar conta Instagram, BMs e ativos digitais
+                Comprar conta Instagram, Twitter e BMs — desde 2021
               </p>
             </Link>
 
             <nav className="vc-nav" aria-label="Navegação principal">
               <Link href="/">Início</Link>
+              <Link href="/comprar-conta-instagram">Instagram</Link>
+              <Link href="/categoria/twitter">Twitter</Link>
+              <Link href="/categoria/bms">BMs Facebook</Link>
               <Link href="/blog">Blog</Link>
-              <Link href="/categoria/instagram">Instagram</Link>
-              <Link href="/categoria/bms">BMs</Link>
-              <Link href="/categoria/youtube">YouTube</Link>
-              <Link href="/categoria/tiktok">TikTok</Link>
-              <Link href="/categoria/twitch">Twitch</Link>
-              <Link href="/categoria/twitter">X/Twitter</Link>
-              <Link href="/categoria/jogos">Jogos</Link>
             </nav>
 
             <a
@@ -378,68 +377,66 @@ export default function RootLayout({
 
         <main className="vc-main">{children}</main>
 
+        {/* ── FOOTER ── */}
         <footer className="vc-footer">
           <div className="vc-footer__inner">
             <div className="vc-footer__grid">
+
+              {/* Col 1 — Sobre */}
               <div>
                 <h2 className="vc-footer__title">
-                  Comprar conta Instagram com mais critério.
+                  Comprar conta Instagram com segurança.
                 </h2>
-
                 <p className="vc-footer__text">
-                  A VendoContas atua com foco em compra de conta Instagram, além
-                  de BMs para contingência, canais do YouTube, contas TikTok,
-                  Twitch, X/Twitter e contas de jogos. O blog existe para
-                  educar, filtrar riscos e aumentar a precisão de cada decisão.
+                  A VendoContas é especializada em compra e venda de contas
+                  Instagram, contas Twitter/X e BMs Facebook no Brasil. Atuamos
+                  desde 2021 com procedência verificada e e-mail original
+                  entregue em toda transação.
                 </p>
-
                 <p className="vc-footer__cnpj">CNPJ: 42.205.606/0001-03</p>
+                <p className="vc-footer__since">No mercado desde 2021</p>
               </div>
 
+              {/* Col 2 — Navegação */}
               <div>
                 <h3 className="vc-footer__heading">Navegação</h3>
                 <div className="vc-footer__links">
                   <Link href="/">Início</Link>
                   <Link href="/blog">Blog</Link>
+                  <Link href="/comprar-conta-instagram">Comprar conta Instagram</Link>
                 </div>
               </div>
 
+              {/* Col 3 — Produtos */}
               <div>
-                <h3 className="vc-footer__heading">Categorias</h3>
+                <h3 className="vc-footer__heading">O que compramos</h3>
                 <div className="vc-footer__links">
-                  <Link href="/categoria/instagram">Contas de Instagram</Link>
-                  <Link href="/categoria/bms">BMs para contingência</Link>
-                  <Link href="/categoria/youtube">Canais do YouTube</Link>
-                  <Link href="/categoria/tiktok">Contas TikTok</Link>
-                  <Link href="/categoria/twitch">Contas Twitch</Link>
-                  <Link href="/categoria/twitter">Contas X/Twitter</Link>
-                  <Link href="/categoria/jogos">Contas de jogos</Link>
+                  <Link href="/comprar-conta-instagram">Contas Instagram</Link>
+                  <Link href="/categoria/twitter">Contas Twitter / X</Link>
+                  <Link href="/categoria/bms">BMs Facebook</Link>
                 </div>
               </div>
 
+              {/* Col 4 — Contato */}
               <div>
                 <h3 className="vc-footer__heading">Contato</h3>
                 <div className="vc-footer__links">
                   <a href={whatsappLink} target="_blank" rel="noreferrer">
                     WhatsApp
                   </a>
-                  <a
-                    href="https://www.instagram.com/"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Instagram
-                  </a>
                 </div>
               </div>
+
             </div>
 
             <div className="vc-footer__bottom">
-              <div>© 2022 VendoContas. Todos os direitos reservados.</div>
+              <div>© 2021 VendoContas. Todos os direitos reservados.</div>
+              <div>Marketplace de ativos digitais — Brasil</div>
             </div>
           </div>
         </footer>
 
+        {/* ── WhatsApp float ── */}
         <a
           href={whatsappLink}
           target="_blank"
