@@ -1,0 +1,46 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f0f1a"/>
+      <stop offset="100%" stop-color="#1a0a2e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#833ab4"/>
+      <stop offset="50%" stop-color="#fd1d1d"/>
+      <stop offset="100%" stop-color="#fcb045"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="0" y="0" width="8" height="630" fill="url(#accent)"/>
+  <rect x="60" y="60" width="1080" height="2" fill="url(#accent)" opacity="0.4"/>
+  <rect x="60" y="568" width="1080" height="2" fill="url(#accent)" opacity="0.4"/>
+
+  <!-- Logo -->
+  <text x="60" y="120" font-family="Arial Black, sans-serif" font-size="28" fill="#ffffff" font-weight="900" letter-spacing="2">VendoContas.com</text>
+  <text x="60" y="148" font-family="Arial, sans-serif" font-size="16" fill="#fcb045">Comprar conta Instagram com garantia desde 2021</text>
+
+  <!-- Titulo principal -->
+  <text x="60" y="240" font-family="Arial Black, sans-serif" font-size="52" fill="#ffffff" font-weight="900">Comprar Conta Instagram 5K Seguidores</text>
+
+  <!-- Seguidores badge -->
+  <rect x="60" y="270" width="340" height="50" rx="8" fill="url(#accent)" opacity="0.9"/>
+  <text x="230" y="303" font-family="Arial Black, sans-serif" font-size="22" fill="#ffffff" font-weight="900" text-anchor="middle">&#128101; 5.000 seguidores</text>
+
+  <!-- Nicho badge -->
+  <rect x="420" y="270" width="220" height="50" rx="8" fill="#ffffff" opacity="0.1"/>
+  <text x="530" y="303" font-family="Arial, sans-serif" font-size="20" fill="#ffffff" text-anchor="middle">Nicho: Geral</text>
+
+  <!-- Preco -->
+  <text x="60" y="400" font-family="Arial, sans-serif" font-size="24" fill="#aaaaaa">A partir de</text>
+  <text x="60" y="460" font-family="Arial Black, sans-serif" font-size="72" fill="#fcb045" font-weight="900">R$ 200</text>
+  <text x="400" y="460" font-family="Arial, sans-serif" font-size="36" fill="#aaaaaa">até R$ 400</text>
+
+  <!-- Selos -->
+  <text x="60" y="530" font-family="Arial, sans-serif" font-size="20" fill="#25D366">&#9989; Email Original (OG)</text>
+  <text x="320" y="530" font-family="Arial, sans-serif" font-size="20" fill="#25D366">&#9989; Garantia 7 dias</text>
+  <text x="580" y="530" font-family="Arial, sans-serif" font-size="20" fill="#25D366">&#9989; Entrega Imediata</text>
+  <text x="840" y="530" font-family="Arial, sans-serif" font-size="20" fill="#25D366">&#9989; CNPJ 42.205.606/0001-03</text>
+
+  <!-- URL -->
+  <text x="60" y="590" font-family="Arial, sans-serif" font-size="18" fill="#555555">https://vendocontas.com/comprar-conta-instagram-5k</text>
+</svg>
